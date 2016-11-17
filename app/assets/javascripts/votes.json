@@ -1,0 +1,19 @@
+{
+  "perCapita": {
+      "Australia": 1.2,
+      "United States": 11.2
+    },
+
+    "likelihood": {
+
+      "United States": [
+       { "deaths": 31.2,
+        "same": "Car accident" }
+      ],
+
+      "Australia": [
+       { "deaths": 1.7},
+         { "same": "Falling from a building or structure" }
+      ]
+    }
+}

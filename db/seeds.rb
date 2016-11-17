@@ -1,0 +1,2 @@
+
+Vote.create(answer: true)

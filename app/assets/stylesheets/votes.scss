@@ -1,3 +1,47 @@
 // Place all the styles related to the Votes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Merriweather');
+
+section {
+  background-color: #cefde9;
+  width: 100%;
+  border: 1px white solid;
+}
+
+#get-data-box {
+  background-color: pink;
+  border: 1px solid grey;
+  width: 200px;
+  height: 40px;
+  margin: 0 auto;
+  align: center;
+  border-radius: 20px;
+  align-content: center;
+}
+
+#get-data {
+  font-size: 20px;
+  line-height: 20px;
+}
+
+body {
+  text-align: center;
+  font-size: 30px;
+  font-family: 'Merriweather', serif;
+}
+
+#intro {
+  height: 900px;
+  line-height: 200px;
+}
+
+#likelihood {
+  height: 900px;
+}
+
+#perCapita {
+  height: 900px;
+}

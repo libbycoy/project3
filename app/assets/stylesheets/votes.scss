@@ -103,7 +103,7 @@ body {
 .intro-layer {
   position: absolute;
   z-index: 100;
-  background-color: black;
+  background-color: #060A0A;
   opacity: 0.8;
   width: 100%;
   height: 100%;
@@ -111,7 +111,7 @@ body {
 
 .main-title {
 	font-family: 'Roboto', sans-serif;
-	color: green;
+	color: #65A8A8;
 	mix-blend-mode: screen;
 	margin: 0 auto;
   display: flex;
@@ -159,7 +159,7 @@ h2 {
 	overflow: hidden;
 }
 
-#homicide {
+#main-nav {
 	color: white;
 	font-family: 'Roboto', sans-serif;
 	text-transform: uppercase;
@@ -172,7 +172,7 @@ h2 {
 	width: 100%;
 	text-align: center;
 	padding: 10px;
-	background-color: green;
+	background-color: #36D4A8;
 	opacity: 0.8;
 }
 
@@ -187,7 +187,7 @@ h2 {
 	width: 100%;
 	text-align: center;
 	padding: 10px;
-	background-color: black;
+	background-color: #060A0A;
 	opacity: 0.8;
 	color: white;
 	font-family: 'Roboto', sans-serif;
@@ -210,6 +210,50 @@ h2 {
 	height: 1000px;
 	display: flex;
 }
+
+#guns {
+	height: 1000px;
+	display: flex;
+	width: 100%;
+	background-color: #2D4D07;
+}
+
+#quote {
+	background-image: url('guns-01.png');
+  background-size: cover;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+}
+
+#top-quote {
+	background-image: url('guns-02.png');
+	background-size: cover;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10;
+}
+
+#text-quote {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 30;
+	font-size: 70px;
+	font-family: 'Roboto', sans-serif;
+	color: #36D4A8;
+	mix-blend-mode: overlay;
+	margin-top: 10%;
+	padding: 120px;
+	opacity: 0.8;
+}
+
 
 .australia {
 	position: absolute;
@@ -248,10 +292,27 @@ h2 {
 .title-text {
 	padding-top: 150px;
 	font-size: 26px;
+	color: #060A0A;
 }
 
 .answer-text {
+	color: #060A0A;
 	padding-bottom: 150px;
-	font-size: 62px;
+	font-size: 92px;
 	margin: 0 auto;
+	font-family: 'Roboto', sans-serif;
+	opacity: 0.8;
+}
+
+.overlay {
+	font-family: 'Roboto', sans-serif;
+	font-size: 110px;
+	opacity: 0.2;
+	text-transform: uppercase;
+	position: absolute;
+	margin-top: 5%;
+	margin-left: 5%;
+	display: flex;
+	margin-bottom: auto;
+	width: 10%;
 }

@@ -18,7 +18,7 @@ $(document).ready(function () {
       var likelihood = data['likelihood']["United States"];
       var likelihoodAus = data['likelihood']["Australia"];
 
-      $('#homicide').hide();
+      $('#main-nav').hide();
       $('#timeline').hide();
       $('#scroll').hide();
       $('#data-1').append(['United States: '], items['United States']).hide();
@@ -31,6 +31,10 @@ $(document).ready(function () {
 
       $(window).scroll(function() {
 
+      var scroll = $(window).scrollTop();
+      $('#quote').css('background-position-y', -scroll / 3);
+      $('#top-quote').css('background-position-y', scroll / 3);
+
        if ($(this).scrollTop() > 260) {
          $('#data-1').fadeIn(1000);
          $('#data-2').fadeIn(1000);
@@ -40,11 +44,11 @@ $(document).ready(function () {
        }
 
        if ($(this).scrollTop() > 860) {
-         $( "#homicide" ).slideDown(400);
+         $( "#main-nav" ).slideDown(400);
          $('#timeline').slideDown(400);
          $('.australia').addClass('img-scale');
       } else {
-          $( "#homicide" ).slideUp(400);
+          $( "#main-nav" ).slideUp(400);
           $('#timeline').slideUp(400);
         }
 

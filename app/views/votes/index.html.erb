@@ -2,20 +2,38 @@
   <!-- <div id="get-data-box">
     <a href="#" id="get-data">Get JSON data</a>
   </div> -->
-  <nav> <a href="#votes"><p>Vote now</p></a></nav>
+  <!-- <nav> <a href="#votes"><p>Vote now</p></a></nav> -->
+  <nav id="homicide">Homicides</nav>
+
+  <div id="timeline">
+    <div class="footer">Homicides</div>
+  </div>
 
   <section id="intro">
-    <div class="intro-layer"></div>
-        <h1>Gun Control: US vs Australia</h1>      
+    <div class="intro-layer">
+      <h1>Gun Control: US vs AUS</h1>
+      <h4 id="scroll">Scroll to view</h4>
+    </div>
         <div class="fullscreen-bg">
-          <iframe id="myVideo"width="100%" height="100%"
-          src="https://www.youtube.com/embed/ZwCzHULzIoA?list=PLA6E79A3DF4C79414&loop=1&autoplay=1&controls=0"frameborder="0" allowfullscreen volume="0">
+          <iframe id="myVideo" class="fullscreen-bg__video" width="100%" height="100%"
+          src="https://www.youtube.com/embed/ZwCzHULzIoA?list=PLA6E79A3DF4C79414&loop=1&autoplay=1&controls=0"frameborder="0" volume="0">
           </iframe>
         </div>
-        <h4 id="scroll">Scroll to view</h4>
+  </section>
+
+  <section id="homocide-aus">
+    <div id="knife-left">
+      <div class="title-text">Most common weapon in homicide</div>
+      <div class="answer-text">Knife</div>
+    </div>
+    <div id="knife-right">
+      <div class="title-text">All homicides</div>
+      <div class="answer-text">238</div>
+    </div>
   </section>
 
   <section id="perCapita">
+
     <div class="perCapitaTitle">Here's how many citizens die per 1000</div>
     <br>
     <div id="data-1"></div>

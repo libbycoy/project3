@@ -4,6 +4,10 @@ $(document).ready(function () {
 
   });
 
+  // animate various intros
+
+  $('#scroll').delay(1000).fadeIn(400);
+
     var showData = $('#show-data');
 
     $.getJSON('/assets/votes.json', function (data) {
@@ -14,6 +18,7 @@ $(document).ready(function () {
       var likelihood = data['likelihood']["United States"];
       var likelihoodAus = data['likelihood']["Australia"];
 
+      $('#homicide').hide();
       $('#scroll').hide();
       $('#data-1').append(['United States: '], items['United States']).hide();
       $('#data-2').append(['Australia: '], items['Australia']).hide();
@@ -25,12 +30,6 @@ $(document).ready(function () {
 
       $(window).scroll(function() {
 
-        if ($(this).scrollTop() > 150) {
-          $('#scroll').fadeIn(1000);
-        } else {
-          $('#scroll').fadeOut();
-        }
-
        if ($(this).scrollTop() > 260) {
          $('#data-1').fadeIn(1000);
          $('#data-2').fadeIn(1000);
@@ -38,6 +37,13 @@ $(document).ready(function () {
          $('#data-1').fadeOut();
          $('#data-2').fadeOut();
        }
+
+       if ($(this).scrollTop() > 840) {
+         $( "#homicide" ).slideDown(400);
+              }
+        else {
+          $( "#homicide" ).slideUp();
+        }
 
        if ($(this).scrollTop() > 1700) {
          $('#data-3').fadeIn(1000);
@@ -50,6 +56,8 @@ $(document).ready(function () {
          $('#data-5').fadeOut();
          $('#data-6').fadeOut();
        }
+
+
 
       //  if ($(this).scrollTop() > 800) {
       //     $('#data-3').append(likelihood[0].deaths).fadeIn(1000);

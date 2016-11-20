@@ -64,18 +64,39 @@ body {
 
 #perCapita {
   height: 900px;
+	margin-top: 60px;
 }
 
 .fullscreen-bg {
-  position: absolute;
-  top: -20%;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  overflow: hidden;
-  z-index: -100;
-  width: 120%;
-  height: 120%;
+    position: absolute;;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -100;
+}
+
+.fullscreen-bg__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .fullscreen-bg__video {
+    height: 300%;
+    top: -100%;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .fullscreen-bg__video {
+    width: 300%;
+    left: -100%;
+  }
 }
 
 .intro-layer {
@@ -88,12 +109,98 @@ body {
 }
 
 h1 {
+	margin: 0 auto;
+	margin-top: 300px;
+  display: flex;
+  align-items: center;
   justify-content: center;
+	flex-direction: column;
   z-index: 200;
   color: white;
-  opacity: 0.9;
+	font-size: 50px;
 }
 
-nav {
-  display: none;
+
+#scroll {
+	color: white;
+	font-size: 15px;
+	display: flex;
+	align-items: center;
+  justify-content: center;
+	flex-direction: column;
+	margin: 0 auto;
+	margin-top: 116px;
+}
+
+#myVideo {
+	overflow: hidden;
+}
+
+#homicide {
+	vertical-align: middle;
+	font-size: 20px;
+	line-height: 45px;
+	z-index: 100;
+	position: fixed;
+	height: 45px;
+	width: 100%;
+	text-align: center;
+	padding: 10px;
+	background-color: yellow;
+}
+
+#timeline {
+	vertical-align: bottom;
+	font-size: 20px;
+	line-height: 45px;
+	z-index: 100;
+	position: fixed;
+	bottom: 0;
+	height: 45px;
+	width: 100%;
+	text-align: center;
+	padding: 10px;
+	background-color: black;
+}
+
+.footer {
+	color: white;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+}
+
+#homocide-aus {
+	height: 1200px;
+	margin-top: 60px;
+	display: flex;
+}
+
+#knife-right {
+	height: 100%;
+	width: 50%;
+	background-color: pink;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+#knife-left {
+	height: 100%;
+	width: 50%;
+	background-color: grey;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.title-text {
+	padding-top: 150px;
+	font-size: 26px;
+}
+
+.answer-text {
+	padding-bottom: 150px;
+	font-size: 62px;
+	margin: 0 auto;
 }

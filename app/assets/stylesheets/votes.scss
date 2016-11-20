@@ -180,6 +180,21 @@ h1 {
 	display: flex;
 }
 
+.australia {
+	position: absolute;
+	display: block;
+	margin-left: 35%;
+	margin-right: auto;
+	margin-top: 25%;
+	width: 150px;
+	opacity: 0.3;
+}
+
+.img-scale {
+	transform: scale(5);
+	transition: transform 1s ease-in-out;
+}
+
 #knife-right {
 	height: 100%;
 	width: 50%;

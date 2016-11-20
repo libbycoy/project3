@@ -42,8 +42,8 @@ $(document).ready(function () {
        if ($(this).scrollTop() > 860) {
          $( "#homicide" ).slideDown(400);
          $('#timeline').slideDown(400);
-              }
-        else {
+         $('.australia').addClass('img-scale');
+      } else {
           $( "#homicide" ).slideUp(400);
           $('#timeline').slideUp(400);
         }

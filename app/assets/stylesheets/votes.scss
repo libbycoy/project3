@@ -171,15 +171,19 @@ h1 {
 }
 
 #homocide-aus {
-	height: 1200px;
-	margin-top: 60px;
+	height: 1000px;
+	display: flex;
+}
+
+#homocide-us {
+	height: 1000px;
 	display: flex;
 }
 
 #knife-right {
 	height: 100%;
 	width: 50%;
-	background-color: pink;
+	background-color: #eee;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;

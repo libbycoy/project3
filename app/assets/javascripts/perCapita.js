@@ -96,8 +96,8 @@ $(document).ready(function () {
           text: 'Custom Chart Title'
       }
     }
-  }
   });
+
 
   // making the votes chart
 
@@ -130,6 +130,7 @@ $(document).ready(function () {
         }]
     },
     options: {
+      showLines: false,
         scales: {
             yAxes: [{
                 ticks: {
@@ -140,6 +141,25 @@ $(document).ready(function () {
     }
 });
 
+// making doughnuts
 
+  // var pie = document.getElementById("pieChart").getContext("2d");
+  //
+  // new Chart(pie).doughnut([
+  // 	{ value: 50, color: "rgba(180,100,100,1)" },
+  // 	{ value: 50, color: '#424647' }
+  // ], {
+  //   segmentShowStroke: false,
+  //   percentageInnerCutout : 90,
+  // });
+  //
+  // var pie3 = document.getElementById("pieChart3").getContext("2d");
+  // new Chart(pie3).doughnut([
+  // 	{ value: 90, color: "rgba(180,100,100,.5)" },
+  // 	{ value: 10, color: '#424647' }
+  // ], {
+  //   segmentShowStroke: false,
+  //   percentageInnerCutout : 96,
+  // });
 
 });

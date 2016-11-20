@@ -4,6 +4,7 @@
 
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 @import url('https://fonts.googleapis.com/css?family=Merriweather');
+@import url('https://fonts.googleapis.com/css?family=Roboto:900');
 
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -108,15 +109,37 @@ body {
   height: 100%;
 }
 
-h1 {
+.main-title {
+	font-family: 'Roboto', sans-serif;
+	color: green;
+	mix-blend-mode: screen;
 	margin: 0 auto;
-	margin-top: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
 	flex-direction: column;
   z-index: 200;
-  color: white;
+	font-size: 300px;
+	opacity: 0.8;
+}
+
+#aus {
+	color: #eee;
+	margin-top: -10px;
+	opacity: 0.6;
+}
+
+h2 {
+	font-family: 'Roboto', sans-serif;
+	color: #eee;
+	mix-blend-mode: screen;
+	margin: 0 auto;
+	margin-top: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+	flex-direction: column;
+  z-index: 200;
 	font-size: 50px;
 }
 
@@ -129,7 +152,7 @@ h1 {
   justify-content: center;
 	flex-direction: column;
 	margin: 0 auto;
-	margin-top: 116px;
+	margin-top: 56px;
 }
 
 #myVideo {
@@ -137,16 +160,20 @@ h1 {
 }
 
 #homicide {
+	color: white;
+	font-family: 'Roboto', sans-serif;
+	text-transform: uppercase;
 	vertical-align: middle;
 	font-size: 20px;
 	line-height: 45px;
-	z-index: 100;
+	z-index: 300;
 	position: fixed;
 	height: 45px;
 	width: 100%;
 	text-align: center;
 	padding: 10px;
-	background-color: yellow;
+	background-color: green;
+	opacity: 0.8;
 }
 
 #timeline {
@@ -161,6 +188,10 @@ h1 {
 	text-align: center;
 	padding: 10px;
 	background-color: black;
+	opacity: 0.8;
+	color: white;
+	font-family: 'Roboto', sans-serif;
+	text-transform: uppercase;
 }
 
 .footer {
@@ -183,16 +214,17 @@ h1 {
 .australia {
 	position: absolute;
 	display: block;
-	margin-left: 35%;
+	margin-left: 45%;
 	margin-right: auto;
 	margin-top: 25%;
-	width: 150px;
-	opacity: 0.3;
+	width: 250px;
+	opacity: 0;
 }
 
 .img-scale {
-	transform: scale(5);
-	transition: transform 1s ease-in-out;
+	transform: scale(3);
+	transition: transform .7s ease-in-out;
+	opacity: 0.25;
 }
 
 #knife-right {

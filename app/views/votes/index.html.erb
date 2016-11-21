@@ -102,17 +102,17 @@
           <%= f.radio_button :answer, false %>
         </div>
             <%= f.submit 'Submit', :class => 'btn' %>
-      <% end %>
+          <% end %>
     </div>
 
     <p>
       Total votes: <%= @votes.count %>
     </p>
     <p>
-      Total yes: <%= @votes.where(:answer => true).count %>
+      Total yes: <p id="yesVotes"><%= @votes.where(:answer => true).count %></p>
     </p>
     <p>
-      Total no: <%= @votes.where(:answer => false).count %>
+      Total no: <p id="noVotes"><%= @votes.where(:answer => false).count %></p>
     </p>
 
     <div style="width: 50%"></div>

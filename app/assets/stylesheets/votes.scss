@@ -319,7 +319,7 @@ h2 {
 
 .btn {
 	border-radius: 10px;
-	border: 1px solid white;
+	border: 0px solid white;
 	background-color: cyan;
 	color: white;
 	width: 200px;
@@ -330,4 +330,9 @@ h2 {
 
 .btn:hover {
 	opacity: 0.7;
+}
+
+#votes {
+	padding-top: 50px;
+	background-color: #36D4A8;
 }

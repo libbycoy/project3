@@ -1,3 +1,3 @@
 class Vote < ActiveRecord::Base
-  validates :answer, :presence => {:if => 'answer.nil?'}
+  validates :answer, :presence => true
 end

@@ -5,13 +5,13 @@ class VotesController < ApplicationController
   end
 
   def create
-    if params[:answer].nil?
-      redirect_to '/votes/show' # Sign up was successful
-    else
+    # if params[:answer].nil?
+    #   redirect_to '/votes/show' # Sign up was successful
+    # else
       @vote = Vote.create(:answer => params[:vote][:answer])
       redirect_to root_path
       @vote.save
-    end
+    # end
     @votes = Vote.all
     end
 

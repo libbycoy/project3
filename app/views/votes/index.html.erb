@@ -32,24 +32,47 @@
       <div class="answer-text">Knife</div>
     </div>
     <div id="knife-right">
-        <div class="title-text">All homicides</div>
-        <div class="answer-text">238</div>
-
-        <div class="title-text">Firearm homicides</div>
-        <div class="answer-text">20</div>
+      <div class="wrapped-content">
+        <div class="homicides" id="homicide-left">
+          <div class="title-text">All homicides</div>
+          <div class="answer-text">238</div>
+        </div>
+        <div class="homicides">
+          <div class="title-text">Firearm homicides</div>
+          <div class="answer-text">20</div>
+        </div>
+      </div>
+        <canvas id="aus_murder" class="circle-graph" width="50%" height="50%"></canvas>
+      <div>
+        <div class="answer-text">44%</div>
+      </div>
     </div>
   </section>
 
   <section id="homocide-us">
+    <img class="australia" src="http://www.tenstickers.co.uk/wall-stickers/img/preview/oceania-map-silhouette-wall-sticker-661.png">
+    <div class="overlay">
+      USA
+    </div>
     <div id="knife-right">
       <div class="title-text">Most common weapon in homicide</div>
       <div class="answer-text">Firearm</div>
     </div>
     <div id="knife-left">
-        <div class="title-text">All homicides</div>
-        <div class="answer-text">15,809</div>
-        <div class="title-text">Firearm homicides</div>
-        <div class="answer-text">10,945</div>
+      <div class="wrapped-content">
+        <div class="homicides" id="homicide-left">
+          <div class="title-text">All homicides</div>
+          <div class="answer-text">15,809</div>
+        </div>
+        <div class="homicides">
+          <div class="title-text">Firearm homicides</div>
+          <div class="answer-text">10,945</div>
+        </div>
+      </div>
+        <canvas id="us_murder" class="circle-graph" width="50%" height="50%"></canvas>
+      <div>
+        <div class="answer-text">69%</div>
+      </div>
     </div>
   </section>
 
@@ -95,16 +118,18 @@
       <%= form_for (@vote) do |f| %>
         <div>
           <%= f.label 'answer', 'Yes' %>
-          <%= f.radio_button :answer, true %>
+          <%= f.radio_button :answer, true, class: 'vote_select' %>
         </div>
         <div>
           <%= f.label 'answer', 'No' %>
-          <%= f.radio_button :answer, false %>
+          <%= f.radio_button :answer, false, class: 'vote_select' %>
         </div>
-            <%= f.submit 'Submit', :class => 'btn' %>
+            <%= f.submit 'Submit', :class => 'btn', :disabled => true, id:'vote_submit' %>
           <% end %>
     </div>
+<!--
 
+-->
     <p>
       Total votes: <%= @votes.count %>
     </p>

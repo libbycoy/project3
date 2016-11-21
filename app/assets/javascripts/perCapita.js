@@ -4,11 +4,20 @@ $(document).ready(function () {
 
   });
 
+  // votes on select disable
+
+  $('.vote_select').click(function(){
+    $('#vote_submit').prop('disabled', false);
+  });
+
   // animate various intros
 
   $('#scroll').delay(1000).fadeIn(400);
 
+
     var showData = $('#show-data');
+
+    // match json data to variables
 
     $.getJSON('/assets/votes.json', function (data) {
       // console.log(Object.keys(data['likelihood']["United States"]));
@@ -28,6 +37,8 @@ $(document).ready(function () {
       $('#data-5').append(likelihoodAus[0].deaths).fadeIn(1000).hide();
       $('#data-6').prepend(likelihoodAus[0].same).fadeIn(1000).hide();
 
+
+      // scroll functions
 
       $(window).scroll(function() {
 
@@ -81,6 +92,8 @@ $(document).ready(function () {
 
   });
 
+  // TODO: move this into JSON file //////////////////////////////////////////////////
+
   var data = {
     labels: ["US", "Australia"],
     datasets: [
@@ -100,6 +113,10 @@ $(document).ready(function () {
     ]
   };
 
+  // TODO: move this into JSON file //////////////////////////////////////////////////
+
+  // deaths per Capita Chart
+
   ctxBar = $('#ctxBar')
 
   var myBarChart = new Chart (ctxBar, {
@@ -113,6 +130,8 @@ $(document).ready(function () {
     }
   });
 
+
+  // TODO: move data for this into JSON file //////////////////////////////////////////////////
 
   // making the votes chart
 
@@ -155,5 +174,68 @@ $(document).ready(function () {
       showLines: false,
     }
 });
+
+  var circleAus = {
+    labels: [
+        "Red",
+        "Blue",
+    ],
+    datasets: [
+        {
+            data: [44, 56],
+            backgroundColor: [
+                "#FF6384",
+                "#36A2EB",
+            ],
+            hoverBackgroundColor: [
+                "#FF6384",
+                "#36A2EB",
+            ]
+        }]
+};
+
+  var circleUsa = {
+    labels: [
+        "Red",
+        "Blue",
+    ],
+    datasets: [
+        {
+            data: [69, 31],
+            backgroundColor: [
+                "#FF6384",
+                "#36A2EB",
+            ],
+            hoverBackgroundColor: [
+                "#FF6384",
+                "#36A2EB",
+            ]
+        }]
+    };
+
+  var ctxAus = $('#aus_murder')
+  var ctxUsa = $('#us_murder')
+
+  var ausChart = new Chart( ctxAus,{
+    type: 'pie',
+    data: circleAus,
+    options: {
+      animation: {
+        animateScale: true
+    }
+    }
+  });
+
+  var usaChart = new Chart( ctxUsa,{
+    type: 'pie',
+    data: circleUsa,
+    options: {
+      animation: {
+        animateScale:true
+    }
+    }
+  });
+
+
 
 });

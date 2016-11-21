@@ -278,6 +278,8 @@ h2 {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
+	padding-top: 50px;
+	padding-bottom: 100px;
 }
 
 #knife-left {
@@ -287,17 +289,18 @@ h2 {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
+	padding-top: 50px;
+	padding-bottom: 100px;
 }
 
 .title-text {
-	padding-top: 150px;
 	font-size: 26px;
 	color: #060A0A;
 }
 
 .answer-text {
 	color: #060A0A;
-	padding-bottom: 150px;
+	padding-bottom: 10px;
 	font-size: 92px;
 	margin: 0 auto;
 	font-family: 'Roboto', sans-serif;
@@ -335,4 +338,31 @@ h2 {
 #votes {
 	padding-top: 50px;
 	background-color: #36D4A8;
+}
+
+.vote_select {
+	width: 30px;
+	height: 30px;
+}
+
+.circle-graph {
+	display: flex;
+	width: 350px !important;
+	height: 350px !important;
+	margin: 0 auto;
+}
+
+.homicides {
+	display: block;
+	margin: 30px;
+}
+
+#homicide-left {
+	float: left;
+}
+
+.wrapped-content {
+	margin: 10px;
+	display: flex;
+	justify-content: center;
 }

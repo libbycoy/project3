@@ -316,3 +316,18 @@ h2 {
 	margin-bottom: auto;
 	width: 10%;
 }
+
+.btn {
+	border-radius: 10px;
+	border: 1px solid white;
+	background-color: cyan;
+	color: white;
+	width: 200px;
+	height: 100px;
+	margin: 10px;
+	font-size: 25px;
+}
+
+.btn:hover {
+	opacity: 0.7;
+}

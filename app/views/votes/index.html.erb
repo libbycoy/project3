@@ -11,7 +11,7 @@
 
   <section id="intro">
     <div class="intro-layer">
-      <h2>GUN CONTROL</h1>
+      <h2>GUN CONTROL</h2>
       <h1 class="main-title">US <span class="main-title" id="aus">AUS</span></h1>
       <h4 id="scroll">Scroll to view</h4>
     </div>
@@ -89,10 +89,32 @@
   </section>
 
   <section id="votes">
+
     <div class="vote">
-      <p>Cast your vote</p>
-      <p>Do you think gun control should be banned in the US?</p>
+      <h2>Do you think the United States should tighten gun control laws?</h2>
+      <%= form_for (@vote) do |f| %>
+        <div>
+          <%= f.label 'answer', 'Yes' %>
+          <%= f.radio_button :answer, true %>
+        </div>
+        <div>
+          <%= f.label 'answer', 'No' %>
+          <%= f.radio_button :answer, false %>
+        </div>
+            <%= f.submit 'Submit', :class => 'btn' %>
+      <% end %>
     </div>
+
+    <p>
+      Total votes: <%= @votes.count %>
+    </p>
+    <p>
+      Total yes: <%= @votes.where(:answer => true).count %>
+    </p>
+    <p>
+      Total no: <%= @votes.where(:answer => false).count %>
+    </p>
+
     <div style="width: 50%"></div>
     <canvas id="myChart"></canvas>
   </section>

@@ -13,4 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require chart.js
+//= require jquery.waypoints.min.js
+//= require counter.js
 //= require_tree .

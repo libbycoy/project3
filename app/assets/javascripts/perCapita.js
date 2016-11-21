@@ -4,6 +4,12 @@ $(document).ready(function () {
 
   });
 
+  // starts the counters up //////////////////////////////
+
+  $('.counter').counterUp({
+    time: 300
+  });
+
   // votes on select disable
 
   $('.vote_select').click(function(){

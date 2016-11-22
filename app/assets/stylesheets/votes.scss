@@ -226,7 +226,7 @@ h2 {
 }
 
 #quote {
-	background-image: url('/assets/guns-01.png');
+	background-image: image-url('guns-01.png');
   background-size: cover;
 	height: 100%;
 	width: 100%;
@@ -237,7 +237,7 @@ h2 {
 }
 
 #orlando {
-	background-image: url('/assets/mass-shootings.png');
+	background-image: image-url('mass-shootings.png');
 	background-color: red;
 	background-blend-mode: multiply;
   background-size: cover;

@@ -52,7 +52,7 @@ $(document).ready(function () {
 
     // match json data to variables
 
-    $.getJSON('/app/assets/javascripts/votes.json', function (data) {
+    $.getJSON('/assets/votes.json', function (data) {
       // console.log(Object.keys(data['likelihood']["United States"]));
       var items = data['perCapita'];
       var key;

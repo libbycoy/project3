@@ -8,11 +8,23 @@ class VotesController < ApplicationController
     # if params[:answer].nil?
     #   redirect_to '/votes/show' # Sign up was successful
     # else
-      @vote = Vote.create(:answer => params[:vote][:answer])
-      redirect_to root_path
+    # p params
+
+      @vote = Vote.create(:answer => params[:answer])
       @vote.save
     # end
-    @votes = Vote.all
+
+    # @votes = Vote.all
+
+    #
+    # true_votes = @votes.where(:answer => true).count
+    # false_votes = @votes.where(:answer => false).count
+
+    vote_count = Vote.group(:answer).count
+    p vote_count
+
+    render :json => vote_count, :status => :ok
+
     end
 
   def show

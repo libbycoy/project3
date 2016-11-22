@@ -1,6 +1,32 @@
 $(document).ready(function () {
 
-  $(function() {
+  $('#new_vote').on('submit', function(e){
+
+    $('#vote_submit').prop('disabled', true);
+
+    var answer = $('.vote_select:checked').val();
+
+    console.log($(this));
+
+    e.preventDefault();
+
+    // ajax handler to submit vote form
+    $.ajax('/votes', {
+      method: "POST",
+      /// need to submit value from form here!
+      data: {answer: answer}
+    })
+    .done(function(response){
+      // var truth = Vote.group(:answer => true).count;
+      // var falsth = Vote.group(:answer => false).count;
+      //$('#yesVotes').html(), $('#noVotes').html()
+      console.log(response);
+      $("#yesVotes").text(response.true);
+      $("#noVotes").text(response.false);
+    })
+    .fail(function(err){
+
+    });
 
   });
 

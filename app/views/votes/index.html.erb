@@ -115,7 +115,7 @@
 
     <div class="vote">
       <h2>Do you think the United States should tighten gun control laws?</h2>
-      <%= form_for (@vote) do |f| %>
+      <%= form_for @vote do |f| %>
         <div>
           <%= f.label 'answer', 'Yes' %>
           <%= f.radio_button :answer, true, class: 'vote_select' %>

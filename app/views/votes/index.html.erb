@@ -118,11 +118,12 @@
       <%= form_for @vote do |f| %>
         <div>
           <%= f.label 'answer', 'Yes' %>
-          <%= f.radio_button :answer, true, class: 'vote_select' %>
+          <%= f.radio_button :answer, true, class: 'vote_select', :disabled => false %>
         </div>
+
         <div>
           <%= f.label 'answer', 'No' %>
-          <%= f.radio_button :answer, false, class: 'vote_select' %>
+          <%= f.radio_button :answer, false, class: 'vote_select', :disabled => false %>
         </div>
             <%= f.submit 'Submit', :class => 'btn', :disabled => true, id:'vote_submit' %>
           <% end %>

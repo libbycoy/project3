@@ -2,6 +2,7 @@ $(document).ready(function () {
 
   $('#new_vote').on('submit', function(e){
 
+    $('.vote_select').prop('disabled', true);
     $('#vote_submit').prop('disabled', true);
 
     var answer = $('.vote_select:checked').val();

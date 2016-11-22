@@ -76,6 +76,12 @@ $(document).ready(function () {
       console.log(response);
       $("#yesVotes").text(response.true);
       $("#noVotes").text(response.false);
+
+      voteData.datasets[0].data[0] = response.true;
+      voteData.datasets[0].data[1] = response.false;
+      myChart.update( )
+
+      // = [$("#yesVotes").text(response.true), $("#noVotes").text(response.false)];
     })
     .fail(function(err){
 
@@ -190,20 +196,22 @@ $(document).ready(function () {
 
   var ctx = $("#myChart");
 
+  var voteData = {
+      labels: ["Yes", "No"],
+      datasets: [{
+          label: '# of Votes',
+          data: [$('#yesVotes').html(), $('#noVotes').html()],
+          backgroundColor: [
+              'rgba(255, 99, 132, 0.8)',
+              'rgba(54, 162, 235, 0.8)',
+          ]
+      }]
+  };
+
   var myChart = new Chart(ctx, {
     type: 'horizontalBar',
     borderSkipped: 'top',
-    data: {
-        labels: ["Yes", "No"],
-        datasets: [{
-            label: '# of Votes',
-            data: [$('#yesVotes').html(), $('#noVotes').html()],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.8)',
-                'rgba(54, 162, 235, 0.8)',
-            ]
-        }]
-    },
+    data: voteData,
     options: {
       scales: {
         xAxes: [{

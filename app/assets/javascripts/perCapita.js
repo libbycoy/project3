@@ -1,6 +1,58 @@
 $(document).ready(function () {
 
-  $('#new_vote').on('submit', function(e){
+  $(window).scroll(function() {
+
+    // scroll functions
+
+  var scroll = $(window).scrollTop();
+  $('#quote').css('background-position-y', -scroll / 3);
+  $('#top-quote').css('background-position-y', scroll / 3);
+
+   if ($(this).scrollTop() > 260) {
+     $('#data-1').fadeIn(1000);
+     $('#data-2').fadeIn(1000);
+   } else {
+     $('#data-1').fadeOut();
+     $('#data-2').fadeOut();
+   }
+
+   if ($(this).scrollTop() > 860) {
+     $( "#main-nav" ).slideDown(400);
+     $('#timeline').slideDown(400);
+     $('.australia').addClass('img-scale');
+  } else {
+      $( "#main-nav" ).slideUp(400);
+      $('#timeline').slideUp(400);
+    }
+
+   if ($(this).scrollTop() > 1700) {
+     $('#data-3').fadeIn(1000);
+     $('#data-4').fadeIn(1000);
+     $('#data-5').fadeIn(1000);
+     $('#data-6').fadeIn(1000);
+   } else {
+     $('#data-3').fadeOut();
+     $('#data-4').fadeOut();
+     $('#data-5').fadeOut();
+     $('#data-6').fadeOut();
+   }
+
+
+
+  //  if ($(this).scrollTop() > 800) {
+  //     $('#data-3').append(likelihood[0].deaths).fadeIn(1000);
+  //     $('#data-4').prepend(likelihood[0].same).fadeIn(1000);
+  //     $('#data-5').append(likelihoodAus[0].deaths).fadeIn(1000);
+  //     $('#data-6').prepend(likelihoodAus[0].same).fadeIn(1000);
+  //   }  else {
+  //     $('#data-3').html('');
+  //     $('#data-4').html('');
+  //     $('#data-5').html('');
+  //     $('#data-6').html('');
+  //   }
+  });
+
+  $('#new_vote').on('submit', function(e) {
 
     $('.vote_select').prop('disabled', true);
     $('#vote_submit').prop('disabled', true);
@@ -47,7 +99,6 @@ $(document).ready(function () {
 
   $('#scroll').delay(1000).fadeIn(400);
 
-
     var showData = $('#show-data');
 
     // match json data to variables
@@ -69,78 +120,42 @@ $(document).ready(function () {
       $('#data-5').append(likelihoodAus[0].deaths).fadeIn(1000).hide();
       $('#data-6').prepend(likelihoodAus[0].same).fadeIn(1000).hide();
 
+    });
 
-      // scroll functions
-
-      $(window).scroll(function() {
-
-      var scroll = $(window).scrollTop();
-      $('#quote').css('background-position-y', -scroll / 3);
-      $('#top-quote').css('background-position-y', scroll / 3);
-
-       if ($(this).scrollTop() > 260) {
-         $('#data-1').fadeIn(1000);
-         $('#data-2').fadeIn(1000);
-       } else {
-         $('#data-1').fadeOut();
-         $('#data-2').fadeOut();
-       }
-
-       if ($(this).scrollTop() > 860) {
-         $( "#main-nav" ).slideDown(400);
-         $('#timeline').slideDown(400);
-         $('.australia').addClass('img-scale');
-      } else {
-          $( "#main-nav" ).slideUp(400);
-          $('#timeline').slideUp(400);
-        }
-
-       if ($(this).scrollTop() > 1700) {
-         $('#data-3').fadeIn(1000);
-         $('#data-4').fadeIn(1000);
-         $('#data-5').fadeIn(1000);
-         $('#data-6').fadeIn(1000);
-       } else {
-         $('#data-3').fadeOut();
-         $('#data-4').fadeOut();
-         $('#data-5').fadeOut();
-         $('#data-6').fadeOut();
-       }
-
-
-
-      //  if ($(this).scrollTop() > 800) {
-      //     $('#data-3').append(likelihood[0].deaths).fadeIn(1000);
-      //     $('#data-4').prepend(likelihood[0].same).fadeIn(1000);
-      //     $('#data-5').append(likelihoodAus[0].deaths).fadeIn(1000);
-      //     $('#data-6').prepend(likelihoodAus[0].same).fadeIn(1000);
-      //   }  else {
-      //     $('#data-3').html('');
-      //     $('#data-4').html('');
-      //     $('#data-5').html('');
-      //     $('#data-6').html('');
-      //   }
-      });
-
-  });
 
   // TODO: move this into JSON file //////////////////////////////////////////////////
 
   var data = {
-    labels: ["US", "Australia"],
+    labels: ["Australia"],
     datasets: [
         {
             label: "Deaths per capita",
             backgroundColor: [
                 'rgba(255, 99, 132, 0.9)',
-                'rgba(54, 162, 235, 0.9)',
             ],
             borderColor: [
                 'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
             ],
             borderWidth: 1,
-            data: [3, 11],
+            data: [3],
+        }
+    ]
+  };
+
+  var data_us = {
+    labels: ["United States"],
+    datasets: [
+        {
+            label: "Deaths per capita",
+            xLabels: [20],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.9)',
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+            ],
+            borderWidth: 1,
+            data: [11],
         }
     ]
   };
@@ -149,18 +164,24 @@ $(document).ready(function () {
 
   // deaths per Capita Chart
 
-  ctxBar = $('#ctxBar')
+  ctxBar = $('#ctxBar-Aus')
 
   var myBarChart = new Chart (ctxBar, {
     type: 'horizontalBar',
     data: data,
     options: {
-      title: {
-          display: true,
-          text: 'Custom Chart Title'
-      }
     }
   });
+
+  ctxBar_us = $('#ctxBar-Us')
+
+  var myBarChart = new Chart (ctxBar_us, {
+    type: 'horizontalBar',
+    data: data_us,
+    options: {
+    }
+  });
+
 
 
   // TODO: move data for this into JSON file //////////////////////////////////////////////////
@@ -277,14 +298,14 @@ $(document).ready(function () {
   var suicideChart = new Chart(suicideCtx, {
   type: 'line',
   data: {
-    labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+    labels: [1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013],
     datasets: [{
-      label: 'apples',
-      data: [12, 19, 3, 17, 6, 3, 7],
+      label: 'Australia',
+      data: [1.4, 1.2, 1.4, 1.1, 1, 0.8, 0.7, 0.9, 0.9, 0.8, 0.8, 0.7, 0.6, 0.7, 0.7],
       backgroundColor: "rgba(153,255,51,0.6)"
     }, {
-      label: 'oranges',
-      data: [2, 29, 5, 5, 2, 3, 10],
+      label: 'United States',
+      data: [6, 6, 5.9, 6, 5.9, 5.8, 5.9, 5.7, 5.9, 5.9, 6, 6.1, 6.1, 6.2, 6.2],
       backgroundColor: "rgba(255,153,0,0.6)"
     }]
   }, options: {
@@ -299,9 +320,6 @@ $(document).ready(function () {
         }
     }],
     yAxes: [{
-      ticks: {
-        beginAtZero: true
-      }
     }]
   }
 }

@@ -222,7 +222,21 @@ h2 {
 	height: 1000px;
 	display: flex;
 	width: 100%;
-	background-color: #2D4D07;
+}
+
+.middle-sec {
+	height: 700px;
+	display: flex;
+	width: 100%;
+}
+
+.small-sec {
+	height: 330px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 20px;
 }
 
 #quote {
@@ -414,6 +428,27 @@ h2 {
 }
 
 #suicide {
-	width: 1200px !important;
+	width: 900px !important;
 	height: 500px !important;
+	margin: 0 auto;
+	padding: 10px;
+}
+
+#orlando-sec {
+	background-color: #2D4D07;
+}
+
+#suicide-sec {
+	background-color: #ddd;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#suicide-graph {
+	background-color: #eee;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
 }

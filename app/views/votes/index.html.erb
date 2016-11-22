@@ -50,7 +50,7 @@
   </section>
 
   <section id="homocide-us">
-    <img class="australia" src="http://www.tenstickers.co.uk/wall-stickers/img/preview/oceania-map-silhouette-wall-sticker-661.png">
+    <img class="australia" src="http://www.atalantasosnoff.com/wp-content/uploads/2014/09/grey-map-300x235.png">
     <div class="overlay">
       USA
     </div>
@@ -81,34 +81,89 @@
     <div id="top-quote">
       <div id="text-quote">
         "If U.S. Firearm homicide rates were only 10 times as high as firearm homicide rates in Australia, rather than 23 times as high, there would be substantially fewer homicides."
+        <br>
+        <br>
+        <div class="title-text">- by so-and-so</div>
       </div>
     </div>
   </section>
 
-  <section class="main-sec">
+  <section class="main-sec" id="orlando-sec">
     <div id="orlando"></div>
     <div id="orlando-top"></div>
     <div class="homicides" id="orlando-quote">
-      <div class="title-text">Mass shootings</div>
-      <div class="answer-text">15,809</div>
-      <div class="title-text">Mass shootings</div>
-      <div class="answer-text">15,809</div>
+    <div class="answer-text">In 1996,</div>
+      <div class="title-text">Australia banned firearms after the Port Arthur Massacre which killed xx people.</div>
+      <div class="title-text">Since then, Australia has had </div>
+      <div class="answer-text">0 mass shootings</div>
+      <div class="title-text">The United States has had</div>
+      <div class="answer-text">64 mass shootings</div>
+      <div class="title-text">leaving over </div>
+      <div class="answer-text">200+ people dead</div>
+
+      <div class="reference">reference:
+        <a href="http://www.motherjones.com/politics/2012/12/mass-shootings-mother-jones-full-data">here</a>
+      </div>
     </div>
+
     </div>
   </section>
 
-  <section class="main-sec">
+  <section class="small-sec">
+      <div class="answer-text">Suicide by Firearm</div>
+  </section>
+
+  <section class="middle-sec" id="suicide-sec">
+
+  <div id="knife-left">
+
+    <div>
+      <div class="answer-text">178/2160</div>
+      <div class="title-text">of all suicide deaths 2014</div>
+    </div>
+
+    <div>
+      <div style="width: 80%">
+        <canvas id="ctxBar-Aus"></canvas>
+      </div>
+      <div class="answer-text">0.7</div>
+      <div class="title-text">deaths per 100,000 2014</div>
+    </div>
+
+    </div>
+
+    <div id="knife-right">
+      <div>
+        <div class="answer-text">21,334/42,773</div>
+        <div class="title-text">of all suicide deaths 2014</div>
+        <div style="width: 80%">
+          <canvas id="ctxBar-Us"></canvas>
+        </div>
+      </div>
+      <div>
+        <div class="answer-text">6.7</div>
+        <div class="title-text">deaths per 100,000 2014</div>
+      </div>
+      </div>
+
+
+  </section>
+
+  <section class="small-sec" style="background-color: red">
+    <div class="answer-text">The US had 6x the number of suicide deaths by firearm per 100,000 people.</div>
+    <div class="title-text">in 2014</div>
+    <div class="reference">reference:
+      <a href="http://www.motherjones.com/politics/2012/12/mass-shootings-mother-jones-full-data">here</a>
+    </div>
+  </section>
+
+  <section class="main-sec" id="suicide-graph">
+    <div>
+      <div class="answer-text">Deaths per 100,000 population</div>
+      <div class="title-text">1999-2013</div>
+    </div>
+  <div>
     <canvas id="suicide" width="300" height="300"></canvas>
-  </section>
-
-  <section id="perCapita">
-
-    <div class="perCapitaTitle">Here's how many citizens die per 1000</div>
-    <br>
-    <div id="data-1"></div>
-    <div id="data-2"></div>
-    <div style="width: 50%">
-      <canvas id="ctxBar"></canvas>
     </div>
   </section>
 
@@ -127,7 +182,8 @@
       </div>
   </section>
 
-  <section id="votes">
+  <section class="middle-sec">
+    <div id="knife-left">
 
     <div class="vote">
       <h2>Do you think the United States should tighten gun control laws?</h2>
@@ -144,19 +200,20 @@
             <%= f.submit 'Submit', :class => 'btn', :disabled => true, id:'vote_submit' %>
           <% end %>
     </div>
+  </div>
 <!--
 
--->
-    <p>
-      Total votes: <%= @votes.count %>
-    </p>
+<-->
+  <div id="knife-right">
     <p>
       Total yes: <p id="yesVotes"><%= @votes.where(:answer => true).count %></p>
     </p>
+
     <p>
       Total no: <p id="noVotes"><%= @votes.where(:answer => false).count %></p>
     </p>
 
     <div style="width: 50%"></div>
     <canvas id="myChart"></canvas>
+    </div>
   </section>

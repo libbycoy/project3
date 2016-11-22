@@ -187,12 +187,13 @@ $(document).ready(function () {
       scales: {
         xAxes: [{
                 gridLines: {
-                    display:false
+                    display:false,
+                    drawTicks: false
                 }
             }],
             yAxes: [{
                 gridLines: {
-                    display:false
+                    display: false
                 }
             }]
               },
@@ -262,12 +263,48 @@ $(document).ready(function () {
     type: 'pie',
     data: circleUsa,
     options: {
+      gridLines: {
+        display: false
+      },
       animation: {
         animateScale:true
     }
     }
   });
 
+  var suicideCtx = $('#suicide');
 
+  var suicideChart = new Chart(suicideCtx, {
+  type: 'line',
+  data: {
+    labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+    datasets: [{
+      label: 'apples',
+      data: [12, 19, 3, 17, 6, 3, 7],
+      backgroundColor: "rgba(153,255,51,0.6)"
+    }, {
+      label: 'oranges',
+      data: [2, 29, 5, 5, 2, 3, 10],
+      backgroundColor: "rgba(255,153,0,0.6)"
+    }]
+  }, options: {
+    responsive: true,
+    legend:{
+      display: false
+  },
+  scales: {
+    xAxes: [{
+        gridLines: {
+            show: false
+        }
+    }],
+    yAxes: [{
+      ticks: {
+        beginAtZero: true
+      }
+    }]
+  }
+}
+});
 
 });

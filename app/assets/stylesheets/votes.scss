@@ -218,7 +218,7 @@ h2 {
 	background-color: blue;
 }
 
-#mass-shooting {
+.main-sec {
 	height: 1000px;
 	display: flex;
 	width: 100%;
@@ -411,4 +411,9 @@ h2 {
 	margin: 10px;
 	display: flex;
 	justify-content: center;
+}
+
+#suicide {
+	width: 1200px !important;
+	height: 500px !important;
 }

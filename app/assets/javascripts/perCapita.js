@@ -54,7 +54,6 @@ $(document).ready(function () {
 
     $.getJSON('/assets/votes.json', function (data) {
       // console.log(Object.keys(data['likelihood']["United States"]));
-
       var items = data['perCapita'];
       var key;
       var likelihood = data['likelihood']["United States"];

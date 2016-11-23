@@ -66,13 +66,11 @@ $(document).ready(function () {
     // ajax handler to submit vote form
     $.ajax('/votes', {
       method: "POST",
-      /// need to submit value from form here!
+
       data: {answer: answer}
     })
     .done(function(response){
-      // var truth = Vote.group(:answer => true).count;
-      // var falsth = Vote.group(:answer => false).count;
-      //$('#yesVotes').html(), $('#noVotes').html()
+
       console.log(response);
       $("#yesVotes").text(response.true);
       $("#noVotes").text(response.false);
@@ -81,7 +79,6 @@ $(document).ready(function () {
       voteData.datasets[0].data[1] = response.false;
       myChart.update( )
 
-      // = [$("#yesVotes").text(response.true), $("#noVotes").text(response.false)];
     })
     .fail(function(err){
 
@@ -143,25 +140,34 @@ $(document).ready(function () {
                 'rgba(255,99,132,1)',
             ],
             borderWidth: 1,
-            data: [3],
+            data: [0.8],
         }
     ]
   };
 
+
+  // mychart.Line(data,{scaleOverride: true, scaleStartValue: 0, scaleStepWidth: 1, scaleSteps: 30});
+
+
   var data_us = {
     labels: ["United States"],
-    datasets: [
+    datasets:
+    [
         {
             label: "Deaths per capita",
-            xLabels: [20],
-            backgroundColor: [
+              backgroundColor: [
                 'rgba(255, 99, 132, 0.9)',
             ],
             borderColor: [
                 'rgba(255,99,132,1)',
             ],
             borderWidth: 1,
-            data: [11],
+            data: [49,100],
+            //scales
+            scaleOverride:true,
+            scaleSteps:9,
+            scaleStartValue:0,
+            scaleStepWidth:1,
         }
     ]
   };
@@ -182,10 +188,13 @@ $(document).ready(function () {
   ctxBar_us = $('#ctxBar-Us')
 
   var myBarChart = new Chart (ctxBar_us, {
+
     type: 'horizontalBar',
     data: data_us,
-    options: {
-    }
+    options:
+      {
+      }
+
   });
 
 
@@ -308,6 +317,7 @@ $(document).ready(function () {
   data: {
     labels: [1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013],
     datasets: [{
+      scale: 10,
       label: 'Australia',
       data: [1.4, 1.2, 1.4, 1.1, 1, 0.8, 0.7, 0.9, 0.9, 0.8, 0.8, 0.7, 0.6, 0.7, 0.7],
       backgroundColor: "rgba(153,255,51,0.6)"

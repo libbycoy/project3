@@ -61,6 +61,7 @@ body {
 
 #likelihood {
   height: 900px;
+	background-color: #eee;
 }
 
 #perCapita {
@@ -413,11 +414,15 @@ h2 {
   font-size: 13px;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
-	width: 70px;
-	height: 20px;
+	width: 120px;
+	height: 50px;
 	border: .5px solid white;
 	line-height: 20px;
 	margin: 5px;
+}
+
+.selected {
+	border: 4px solid black;
 }
 
 .btn-vote:hover {
@@ -451,6 +456,13 @@ h2 {
 	margin: 0 auto;
 }
 
+.bubble-graph {
+	display: flex;
+	width: 600px !important;
+	height: 400px !important;
+	margin: 0 auto;
+}
+
 .homicides {
 	display: block;
 	margin: 30px;
@@ -466,11 +478,31 @@ h2 {
 	justify-content: center;
 }
 
-#suicide {
+#per_100_suicide {
 	width: 900px !important;
 	height: 500px !important;
 	margin: 0 auto;
 	padding: 10px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+}
+
+#per_100_total{
+	width: 900px !important;
+	height: 500px !important;
+	margin: 0 auto;
+	padding: 10px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#per_100_wrapper {
+	width: 900px !important;
+	height: 500px !important;
+	position: relative;
 }
 
 #orlando-sec {

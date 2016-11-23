@@ -41,7 +41,6 @@ $(document).ready(function () {
 
 
 $('#data-btn').on('click', function() {
-  console.log(myBubbleChart.data.datasets[0].data);
   myBubbleChart.data.datasets[0].data = [
       {
       // make this invisible
@@ -51,27 +50,27 @@ $('#data-btn').on('click', function() {
       },
       {
           x: 1999,
-          y: 5.4,
+          y: 6,
           r: 15
       },
       {
           x: 2000,
-          y: 5.2,
+          y: 6,
           r: 30
       },
       {
           x: 2001,
-          y: 8.4,
+          y: 5.9,
           r: 10
       },
       {
           x: 2002,
-          y: 5.1,
+          y: 6,
           r: 10
       },
       {
           x: 2003,
-          y: 5,
+          y: 5.9,
           r: 15
       },
       {
@@ -81,51 +80,52 @@ $('#data-btn').on('click', function() {
       },
       {
           x: 2005,
-          y: 6.7,
+          y: 5.9,
           r: 10
       },
       {
           x: 2006,
-          y: 6.9,
+          y: 5.7,
           r: 10
       },
       {
           x: 2007,
-          y: 9.8,
+          y: 5.9,
           r: 15
       },
       {
           x: 2008,
-          y: 9.8,
+          y: 5.9,
           r: 30
       },
       {
           x: 2009,
-          y: 9.8,
+          y: 6,
           r: 10
       },
       {
           x: 2010,
-          y: 9.7,
+          y: 6.1,
           r: 10
       },
       {
           x: 2011,
-          y: 9.6,
+          y: 6.1,
           r: 30
       },
       {
           x: 2012,
-          y: 9.7,
+          y: 6.2,
           r: 10
       },
       {
           x: 2013,
-          y: 9.7,
+          y: 6.2,
           r: 10
       }
   ];
   myBubbleChart.update();
+  $('#switch-title').text('United States per 100,000');
 });
 
 
@@ -434,20 +434,36 @@ $('#data-btn').on('click', function() {
     }
   });
 
+  // total death by firearm
+
   var suicideCtx = $('#per_100_suicide');
 
   var suicideChart = new Chart(suicideCtx, {
     type: 'line',
     data: {
-      labels: [1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013],
+      labels: [2009, 2010, 2011, 2012, 2013],
       datasets: [{
         scale: 10,
         label: 'Australia',
-        data: [1.4, 1.2, 1.4, 1.1, 1, 0.8, 0.7, 0.9, 0.9, 0.8, 0.8, 0.7, 0.6, 0.7, 0.7],
+        borderColor: "rgba(75,192,192,0)",
+
+        pointBorderColor: "rgba(75,192,192,0)",
+        pointBackgroundColor: "rgba(75,192,192,0)",
+        pointBorderWidth: 3,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: [ 30, 39, 41, 43, 47],
         backgroundColor: "rgba(153,255,51,0.6)"
       }, {
         label: 'United States',
-        data: [6, 6, 5.9, 6, 5.9, 5.8, 5.9, 5.7, 5.9, 5.9, 6, 6.1, 6.1, 6.2, 6.2],
+        borderColor: "rgba(75,192,192,0)",
+
+        pointBorderColor: "rgba(75,192,192,0)",
+        pointBackgroundColor: "rgba(75,192,192,0)",
+        pointBorderWidth: 3,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: [9199, 8874, 8653, 8897, 8454 ],
         backgroundColor: "rgba(255,153,0,0.6)"
       }]
     },
@@ -475,12 +491,14 @@ $('#data-btn').on('click', function() {
 
 });
 
+// total deaths
+
   var totalCtx = $('#per_100_total');
 
   var totalChart = new Chart(totalCtx, {
     type: 'line',
     data: {
-      labels: [1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013],
+      labels: [2009, 2010, 2011, 2012, 2013],
       datasets: [{
         scale: 10,
         label: 'Australia',
@@ -493,7 +511,7 @@ $('#data-btn').on('click', function() {
         pointBorderWidth: 3,
         pointRadius: 1,
         pointHitRadius: 10,
-        data: [1.4, 1.2, 5.4, 1.1, 5, 0.8, 0.7, 1.9, 0.9, 0.8, 0.8, 0.7, 0.6, 0.7, 0.7],
+        data: [263, 229, 230, 454, 430],
         backgroundColor: "rgba(153,255,51,0.6)"
       }, {
         label: 'United States',
@@ -506,7 +524,7 @@ $('#data-btn').on('click', function() {
         pointBorderWidth: 3,
         pointRadius: 1,
         pointHitRadius: 10,
-        data: [3, 3, 3.9, 3, 5.9, 5.8, 3.9, 5.7, 5.9, 3.9, 3, 6.1, 6.1, 3.2, 6.2],
+        data: [13752, 13164, 12795, 12888, 12253],
         backgroundColor: "rgba(255,153,0,0.6)"
       }]
     },

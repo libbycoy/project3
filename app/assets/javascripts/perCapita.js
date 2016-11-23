@@ -12,10 +12,15 @@ $(document).ready(function () {
     $('#vote_submit').prop('disabled', true);
   }
 
+
+
   // button functionality for graphs
 
   $('#per_100_suicide').hide();
   $('#total-btn').addClass('selected');
+  $('#myVideo').hide();
+  $('#myVideo').fadeIn(4000);
+  // $('#aus_murder').hide();
 
   // $('#per_100_total').hide();
 
@@ -28,12 +33,14 @@ $(document).ready(function () {
   });
 
   $('#suicide-btn').on('click', function() {
-    $('#per_100_suicide').show(200);
+    $('#per_100_suicide').show(1000);
     $('#per_100_total').fadeOut(1000);
     $('#suicide-btn').addClass('selected');
     $('#total-btn').removeClass('selected');
     suicideChart.update(1000, lazy);
   });
+
+
 
 
 $('#data-btn').on('click', function() {
@@ -122,7 +129,7 @@ $('#data-btn').on('click', function() {
   ];
   myBubbleChart.update();
   $('#switch-title').text('United States per 100,000');
-});
+  });
 
 $('#hom-btn').on('click', function() {
   homocideBubble.data.datasets[0].data = [
@@ -296,9 +303,9 @@ $('#hom-btn').on('click', function() {
 
     })
     .fail(function(err){
-      console.log('hi');
+
+      });
     });
-});
 
 
   // starts the counters up //////////////////////////////
@@ -489,19 +496,33 @@ $('#hom-btn').on('click', function() {
         }]
     };
 
+
+  // waypoint triggers
+
   var ctxAus = $('#aus_murder')
   var ctxUsa = $('#us_murder')
 
-  var ausChart = new Chart( ctxAus,{
-    type: 'pie',
-    data: circleAus,
-    options: {
-      animation: {
-        animateScale: true
-    }
-    }
+  var waypoint = new Waypoint({
+  element: ctxAus,
+  handler: function() {
+    var ausChart = new Chart( ctxAus,{
+      type: 'pie',
+      data: circleAus,
+      options: {
+        animation: {
+          animateScale: true
+      }
+      }
+    })
+    this.destroy();
+  },
+  offset: '75%'
   });
 
+
+  var waypointTwo = new Waypoint({
+  element: ctxUsa,
+  handler: function() {
   var usaChart = new Chart( ctxUsa,{
     type: 'pie',
     data: circleUsa,
@@ -511,8 +532,12 @@ $('#hom-btn').on('click', function() {
       },
       animation: {
         animateScale:true
-    }
-    }
+      }
+      }
+    })
+    this.destroy();
+    },
+    offset: '75%'
   });
 
   // total death by firearm
@@ -842,9 +867,9 @@ $('#hom-btn').on('click', function() {
         animationEasing: "easeOutBounce",
         onAnimationComplete: null,
         duration: 3000,
-            onProgress: function(animation) {
-              console.log('hi');
-            }
+            // onProgress: function(animation) {
+            //   console.log('hi');
+            // }
           },
                   scales: {
           xAxes: [{
@@ -883,9 +908,8 @@ $('#hom-btn').on('click', function() {
         animationEasing: "easeOutBounce",
         onAnimationComplete: null,
         duration: 3000,
-            onProgress: function(animation) {
-              console.log('hi');
-            }
+            // onProgress: function(animation) {
+            //   console.log('hi');
           },
                   scales: {
           xAxes: [{

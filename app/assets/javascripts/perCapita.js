@@ -1,4 +1,19 @@
+
+  var hasVoted = function() {
+    return  (document.cookie.replace(/(?:(?:^|.*;\s*)hasVoted\s*\=\s*([^;]*).*$)|^.*$/, "$1") === "true");
+  };
+
+
 $(document).ready(function () {
+
+  if( hasVoted() ){
+
+    $('#vote_submit').val('Already Voted');
+    $('#vote_submit').prop('disabled', true);
+
+  }
+
+  // cookies
 
   // button functionality for graphs
 
@@ -114,11 +129,9 @@ $('#data-btn').on('click', function() {
 });
 
 
-
   $(window).scroll(function() {
 
     // scroll functions
-
   var scroll = $(window).scrollTop();
   $('#quote').css('background-position-y', -scroll / 3);
   $('#top-quote').css('background-position-y', scroll / 3);
@@ -152,41 +165,32 @@ $('#data-btn').on('click', function() {
      $('#data-6').fadeOut();
    }
 
-
-
-  //  if ($(this).scrollTop() > 800) {
-  //     $('#data-3').append(likelihood[0].deaths).fadeIn(1000);
-  //     $('#data-4').prepend(likelihood[0].same).fadeIn(1000);
-  //     $('#data-5').append(likelihoodAus[0].deaths).fadeIn(1000);
-  //     $('#data-6').prepend(likelihoodAus[0].same).fadeIn(1000);
-  //   }  else {
-  //     $('#data-3').html('');
-  //     $('#data-4').html('');
-  //     $('#data-5').html('');
-  //     $('#data-6').html('');
-  //   }
   });
 
+
   $('#new_vote').on('submit', function(e) {
+
+    e.preventDefault();
+
+    if( hasVoted() ) {
+      return;
+    }
 
     $('.vote_select').prop('disabled', true);
     $('#vote_submit').prop('disabled', true);
 
     var answer = $('.vote_select:checked').val();
 
-    console.log($(this));
-
-    e.preventDefault();
-
     // ajax handler to submit vote form
     $.ajax('/votes', {
       method: "POST",
-
       data: {answer: answer}
     })
-    .done(function(response){
+    .done(function(response) {
+      // set cookie to prevent repeat voting
+      document.cookie = "hasVoted=true; expires=Fri, 24 Nov 2016 08:59:59 GMT";
 
-      console.log(response);
+      // console.log(response);
       $("#yesVotes").text(response.true);
       $("#noVotes").text(response.false);
 
@@ -196,10 +200,10 @@ $('#data-btn').on('click', function() {
 
     })
     .fail(function(err){
-
+      console.log('hi');
     });
+});
 
-  });
 
   // starts the counters up //////////////////////////////
 
@@ -210,7 +214,9 @@ $('#data-btn').on('click', function() {
   // votes on select disable
 
   $('.vote_select').click(function(){
-    $('#vote_submit').prop('disabled', false);
+    if( !hasVoted() ){
+      $('#vote_submit').prop('disabled', false);
+    }
   });
 
   // animate various intros
@@ -240,6 +246,8 @@ $('#data-btn').on('click', function() {
     $('#data-6').prepend(likelihoodAus[0].same).fadeIn(1000).hide();
 
   });
+
+
 
 
   // TODO: move this into JSON file //////////////////////////////////////////////////
@@ -357,7 +365,7 @@ $('#data-btn').on('click', function() {
   options: {
     animation: {
       animateScale: true
-  }
+    }
   }
   });
 

@@ -1,3 +1,4 @@
+// cookies
 
   var hasVoted = function() {
     return  (document.cookie.replace(/(?:(?:^|.*;\s*)hasVoted\s*\=\s*([^;]*).*$)|^.*$/, "$1") === "true");
@@ -7,19 +8,14 @@
 $(document).ready(function () {
 
   if( hasVoted() ){
-
     $('#vote_submit').val('Already Voted');
     $('#vote_submit').prop('disabled', true);
-
   }
-
-  // cookies
 
   // button functionality for graphs
 
-
   $('#per_100_suicide').hide();
-  $('#per_100_total').hide();
+  $('#total-btn').addClass('selected');
 
   // $('#per_100_total').hide();
 
@@ -126,6 +122,106 @@ $('#data-btn').on('click', function() {
   ];
   myBubbleChart.update();
   $('#switch-title').text('United States per 100,000');
+});
+
+$('#hom-btn').on('click', function() {
+  homocideBubble.data.datasets[0].data = [
+      {
+      // make this invisible
+        x: 1999,
+        y: 0,
+        r: 0
+      },
+      {
+          x: 2011,
+          y: 3.59,
+          r: 30
+      },
+      {
+          x: 1999,
+          y: 3.37,
+          r: 15
+      },
+      {
+          x: 2010,
+          y: 3.75,
+          r: 10
+      },
+      {
+          x: 2001,
+          y: 3.84,
+          r: 10
+      },
+      {
+          x: 2003,
+          y: 4.11,
+          r: 15
+      },
+      {
+          x: 2004,
+          y: 4.11,
+          r: 30
+      },
+      {
+          x: 2005,
+          y: 3.97,
+          r: 10
+      },
+      {
+          x: 2006,
+          y: 4.18,
+          r: 10
+      },
+      {
+          x: 2007,
+          y: 4.29,
+          r: 15
+      },
+      {
+          x: 2000,
+          y: 3.88,
+          r: 30
+      },
+      {
+          x: 2008,
+          y: 4.19,
+          r: 30
+      },
+      {
+          x: 2002,
+          y: 3.98,
+          r: 10
+      },
+      {
+          x: 2009,
+          y: 4.01,
+          r: 10
+      },
+
+      {
+          x: 2012,
+          y: 3.55,
+          r: 10
+      },
+      {
+          x: 2013,
+          y: 3.7,
+          r: 10
+      },
+      {
+          x: 2014,
+          y: 3.54,
+          r: 10
+      },
+
+      {
+          x: 2015,
+          y: 3.56,
+          r: 0
+      }
+  ];
+  homocideBubble.update();
+  $('#bubble-title').text('United States per 100,000');
 });
 
 
@@ -253,7 +349,7 @@ $('#data-btn').on('click', function() {
   // TODO: move this into JSON file //////////////////////////////////////////////////
 
   var data = {
-    labels: ["Australia"],
+    labels: ["Suicides by gun", "Other"],
     datasets: [
         {
             label: "Deaths per capita",
@@ -261,10 +357,10 @@ $('#data-btn').on('click', function() {
                 'rgba(255, 99, 132, 0.9)',
             ],
             borderColor: [
-                'rgba(255,99,132,1)',
+                'rgba(255,99,132,0)',
             ],
             borderWidth: 1,
-            data: [0.8],
+            data: [178, 2160]
         }
     ]
   };
@@ -276,32 +372,17 @@ $('#data-btn').on('click', function() {
 
 
   var data_us = {
-    labels: ["United States","United States"],
-    options: {
-      scales: {
-        xAxes: [{
-
-      }]
-    }
-  },
-
+    labels: ["Suicides by gun", "Other"],
+    options: {},
     datasets:
-    [
-        {
-            label: "Deaths per capita",
-              backgroundColor: [
-                'rgba(255, 99, 132, 0.9)',
-                'rgba(255,99,132,1)',
-            ],
-
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(255,99,132,1)',
-
-            ],
-            borderWidth: 1,
-            data: [21334 , 42773]
-            //scales
+    [{
+        label: "Deaths per capita",
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.9)',
+        ],
+        borderWidth: 1,
+        data: [21334 , 42773]
+        //scales
         }
     ]
   };
@@ -310,20 +391,20 @@ $('#data-btn').on('click', function() {
 
   // deaths per Capita Chart
 
-  ctxBar = $('#ctxBar-Aus')
+  ctxBar = $('#ctxBar-Aus');
 
-  var myBarChart = new Chart (ctxBar, {
-    type: 'bar',
-    bardata: data,
-    options: {
-    }
+  var myDoughnutChartAus = new Chart(ctxBar, {
+    type: 'doughnut',
+    data: data,
+    options: {}
   });
+
 
   ctxBar_us = $('#ctxBar-Us')
 
-  var myBarChart = new Chart (ctxBar_us, {
+  var myDoughnutChartUs = new Chart (ctxBar_us, {
 
-    type: 'bar',
+    type: 'doughnut',
     data: data_us,
     options:
       {
@@ -452,7 +533,7 @@ $('#data-btn').on('click', function() {
         pointBorderWidth: 3,
         pointRadius: 1,
         pointHitRadius: 10,
-        data: [ 30, 39, 41, 43, 47],
+        data:[13752, 13164, 12795, 12888, 12253],
         backgroundColor: "rgba(153,255,51,0.6)"
       }, {
         label: 'United States',
@@ -524,7 +605,7 @@ $('#data-btn').on('click', function() {
         pointBorderWidth: 3,
         pointRadius: 1,
         pointHitRadius: 10,
-        data: [13752, 13164, 12795, 12888, 12253],
+        data: [ 30, 39, 41, 43, 47],
         backgroundColor: "rgba(255,153,0,0.6)"
       }]
     },
@@ -553,6 +634,7 @@ $('#data-btn').on('click', function() {
   });
 
   bubbleCtx = $('#bubble');
+  homBubCtx = $('#bubble-homocide');
 
   var dataBub = {
     datasets: [
@@ -646,10 +728,153 @@ $('#data-btn').on('click', function() {
         }]
       };
 
+      var dataHomBub = {
+        datasets: [
+            {
+                label: 'First Dataset',
+                data: [
+                    {
+                    // make this invisible
+                      x: 1999,
+                      y: 0,
+                      r: 0
+                    },
+                    {
+                        x: 1999,
+                        y: 0.3,
+                        r: 15
+                    },
+                    {
+                        x: 2000,
+                        y: 0.3,
+                        r: 30
+                    },
+                    {
+                        x: 2001,
+                        y: 0.3,
+                        r: 10
+                    },
+                    {
+                        x: 2002,
+                        y: 0.2,
+                        r: 10
+                    },
+                    {
+                        x: 2003,
+                        y: 0.2,
+                        r: 15
+                    },
+                    {
+                        x: 2004,
+                        y: 0.3,
+                        r: 30
+                    },
+                    {
+                        x: 2005,
+                        y: 0.1,
+                        r: 10
+                    },
+                    {
+                        x: 2006,
+                        y: 0.1,
+                        r: 10
+                    },
+                    {
+                        x: 2007,
+                        y: 0.2,
+                        r: 15
+                    },
+                    {
+                        x: 2008,
+                        y: 0.1,
+                        r: 30
+                    },
+                    {
+                        x: 2009,
+                        y: 0.1,
+                        r: 10
+                    },
+                    {
+                        x: 2010,
+                        y: 0.2,
+                        r: 10
+                    },
+                    {
+                        x: 2011,
+                        y: 0.2,
+                        r: 30
+                    },
+                    {
+                        x: 2012,
+                        y: 0.1,
+                        r: 10
+                    },
+                    {
+                        x: 2013,
+                        y: 0.1,
+                        r: 10
+                    },
+                    {
+                        x: 2014,
+                        y: 0.1,
+                        r: 10
+                    },
+                    {
+                        x: 2014,
+                        y: 3.7,
+                        r: 0
+                    },
+                ],
+                backgroundColor:"#FF6384",
+                hoverBackgroundColor: "#FF6384",
+            }]
+          };
+
 
   var myBubbleChart = new Chart(bubbleCtx,{
       type: 'bubble',
       data: dataBub,
+      options: {
+          animation: {
+            percentageInnerCutout: 50,
+        animation: true,
+        animationSteps: 100,
+        animationEasing: "easeOutBounce",
+        onAnimationComplete: null,
+        duration: 3000,
+            onProgress: function(animation) {
+              console.log('hi');
+            }
+          },
+                  scales: {
+          xAxes: [{
+            scaleLabel: {
+              display: true,
+              fontColor: 'red'
+            },
+            gridLines: {
+                display: false,
+                // drawTicks: false
+            }
+        }],
+        yAxes: [{
+            gridLines: {
+                display: false
+            }
+        }]
+          },
+        elements: {
+            points: {
+                borderWidth: 1,
+                borderColor: 'rgb(0, 0, 0)'
+            }
+        }
+      }
+  });
+
+  var homocideBubble = new Chart(homBubCtx,{
+      type: 'bubble',
+      data: dataHomBub,
       options: {
           animation: {
             percentageInnerCutout: 50,

@@ -33,7 +33,7 @@ section {
 }
 
 #get-data-box {
-  background-color: pink;
+  background-color: #36D4A8;
   border: 1px solid grey;
   width: 200px;
   height: 40px;
@@ -60,8 +60,9 @@ body {
 }
 
 #likelihood {
+	padding-top: 20px;
   height: 900px;
-	background-color: pink;
+	background-color: #ddd;
 }
 
 #perCapita {
@@ -222,6 +223,9 @@ h2 {
 .main-sec {
 	height: 1000px;
 	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
 	width: 100%;
 }
 
@@ -238,6 +242,7 @@ h2 {
 	flex-direction: column;
 	align-items: center;
 	padding-top: 20px;
+	background-color: #eee;
 }
 
 #quote {
@@ -362,7 +367,7 @@ h2 {
 .answer-text {
 	color: #060A0A;
 	padding-bottom: 10px;
-	font-size: 92px;
+	font-size: 62px;
 	margin: 0 auto;
 	font-family: 'Roboto', sans-serif;
 	opacity: 0.8;
@@ -510,17 +515,17 @@ h2 {
 }
 
 #suicide-sec {
-	background-color: #ddd;
+	background-color: #36D4A8;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
 #suicide-graph {
-	background-color: #eee;
+	background-color: #36D4A8;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	height: 1400px !important;
+	height: 1100px !important;
 }

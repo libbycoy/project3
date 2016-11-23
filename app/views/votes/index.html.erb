@@ -93,6 +93,102 @@
     </div>
   </section>
 
+  <section class="small-sec">
+      <div class="answer-text">Suicide by Firearm</div>
+  </section>
+
+  <section class="middle-sec" id="suicide-sec">
+
+  <div id="knife-left">
+
+    <div>
+      <div class="answer-text">178/2160</div>
+      <div class="title-text">of all suicide deaths 2014</div>
+    </div>
+
+    <div>
+      <div style="width: 80%">
+        <canvas id="ctxBar-Aus" class="circle-graph"></canvas>
+      </div>
+      <div class="answer-text">0.7</div>
+      <div class="title-text">deaths per 100,000 2014</div>
+    </div>
+
+    </div>
+
+    <div id="knife-right">
+      <div>
+        <div class="answer-text">21,334/42,773</div>
+        <div class="title-text">of all suicide deaths 2014</div>
+        <div style="width: 80%">
+          <canvas id="ctxBar-Us" class="circle-graph"></canvas>
+        </div>
+      </div>
+      <div>
+        <div class="answer-text">6.7</div>
+        <div class="title-text">deaths per 100,000 2014</div>
+      </div>
+      </div>
+  </section>
+
+  <section id="likelihood">
+    <br>
+    <div class="answer-text" >Suicide by firearm comparison</div>
+    <div class="title-text" id="switch-title">Australia per 100,000</div>
+    <button class="btn-vote" id="data-btn">data switch</button>
+    <canvas id="bubble" width="300" height="200" class="bubble-graph"></canvas>
+  </section>
+
+  <section class="small-sec" style="background-color: red">
+    <div class="answer-text">The US had 6x the number of suicide deaths by firearm per 100,000 people.</div>
+    <div class="title-text">in 2014</div>
+    <div class="reference">reference:
+      <a href="http://www.motherjones.com/politics/2012/12/mass-shootings-mother-jones-full-data">here</a>
+    </div>
+  </section>
+
+  <section class="main-sec" id="homocide-comparison">
+    <br>
+    <div class="answer-text" >Homicide by firearm comparison</div>
+    <div class="title-text" id="bubble-title">Australia per 100,000</div>
+    <button class="btn-vote" id="hom-btn">data switch</button>
+    <canvas id="bubble-homocide" width="300" height="200" class="bubble-graph"></canvas>
+  </section>
+
+  <section class="small-sec">
+    <div class="likelihoodTitle" id="switch-title">The likelihood is the same as ...</div>
+      <br>
+      <div id="data-3"></div>
+      <div id="data-4">in the United States</div>
+      <div id="data-5"></div>
+      <div id="data-6">in Australia</div>
+  </section>
+
+  <section class="main-sec" id="suicide-graph">
+    <div>
+      <div class="answer-text">Total homicides vs. firearm homicides</div>
+      <div class="title-text">in population numbers</div>
+      <div class="title-text">1999-2013</div>
+      <button class="btn-vote" id="total-btn">Australia</button>
+      <button class="btn-vote" id="suicide-btn">United States</button>
+    </div>
+    <div>
+
+  <div id="per_100_wrapper">
+    <canvas id="per_100_total" width="300" height="300"></canvas>
+    <canvas id="per_100_suicide" width="300" height="300"></canvas>
+    </div>
+    </div>
+  </section>
+
+  <section class="small-sec" style="background-color: red">
+    <div class="answer-text">The US had 6x the number of murders by firearm per 100,000 people.</div>
+    <div class="title-text">in 2014</div>
+    <div class="reference">reference:
+      <a href="http://www.motherjones.com/politics/2012/12/mass-shootings-mother-jones-full-data">here</a>
+    </div>
+  </section>
+
   <section class="main-sec" id="orlando-sec">
     <div id="orlando"></div>
     <div id="orlando-top"></div>
@@ -112,88 +208,6 @@
     </div>
 
     </div>
-  </section>
-
-  <section class="small-sec">
-      <div class="answer-text">Suicide by Firearm</div>
-  </section>
-
-  <section class="middle-sec" id="suicide-sec">
-
-  <div id="knife-left">
-
-    <div>
-      <div class="answer-text">178/2160</div>
-      <div class="title-text">of all suicide deaths 2014</div>
-    </div>
-
-    <div>
-      <div style="width: 80%">
-        <canvas id="ctxBar-Aus"></canvas>
-      </div>
-      <div class="answer-text">0.7</div>
-      <div class="title-text">deaths per 100,000 2014</div>
-    </div>
-
-    </div>
-
-    <div id="knife-right">
-      <div>
-        <div class="answer-text">21,334/42,773</div>
-        <div class="title-text">of all suicide deaths 2014</div>
-        <div style="width: 80%">
-          <canvas id="ctxBar-Us"></canvas>
-        </div>
-      </div>
-      <div>
-        <div class="answer-text">6.7</div>
-        <div class="title-text">deaths per 100,000 2014</div>
-      </div>
-      </div>
-
-
-  </section>
-
-  <section class="small-sec" style="background-color: red">
-    <div class="answer-text">The US had 6x the number of suicide deaths by firearm per 100,000 people.</div>
-    <div class="title-text">in 2014</div>
-    <div class="reference">reference:
-      <a href="http://www.motherjones.com/politics/2012/12/mass-shootings-mother-jones-full-data">here</a>
-    </div>
-  </section>
-
-  <section class="main-sec" id="suicide-graph">
-    <div>
-      <div class="answer-text">Murders vs. gun murders</div>
-      <div class="title-text">1999-2013</div>
-      <button class="btn-vote" id="total-btn">total</button>
-      <button class="btn-vote" id="suicide-btn">suicide</button>
-    </div>
-
-  <div id="per_100_wrapper">
-    <canvas id="per_100_total" width="300" height="300"></canvas>
-    <canvas id="per_100_suicide" width="300" height="300"></canvas>
-    </div>
-  </section>
-
-  <section id="likelihood">
-    <div class="likelihoodTitle" >Suicide comparison</div>
-    <div class="answer-text" id="switch-title">Australia per 100,000</div>
-    <button class="btn-vote" id="data-btn">data switch</button>
-    <canvas id="bubble" width="300" height="200" class="bubble-graph"></canvas>
-
-    <div class="likelihoodTitle" id="switch-title">The likelihood is the same as ...</div>
-      <br>
-      <div id="data-3"></div>
-      <div id="data-4">in the United States</div>
-      <div id="data-5"></div>
-      <div id="data-6">in Australia</div>
-
-      <div class="chart02">
-        <canvas id="pieChart" class="circle01" width="300" height="300"></canvas>
-        <canvas id="pieChart2" class="circle02" width="300" height="260"></canvas>
-        <canvas id="pieChart3" class="circle03" width="300" height="200"></canvas>
-      </div>
   </section>
 
   <section class="middle-sec" id="vote-sec">
@@ -228,7 +242,7 @@
     </p>
 
     <div style="width: 50%"></div>
-    <canvas id="myChart"></canvas>
+    <canvas id="myChart" class="circle-graph"></canvas>
     </div>
 
   </section>

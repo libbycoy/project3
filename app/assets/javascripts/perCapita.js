@@ -185,7 +185,7 @@ $(document).ready(function () {
         {
             label: "Deaths per capita",
             backgroundColor: [
-                'rgba(255, 99, 132, 0.9)',
+                'rgba(255,0,27,0.8)',
             ],
             borderColor: [
                 'rgba(255,99,132,0)',
@@ -209,7 +209,7 @@ $(document).ready(function () {
     [{
         label: "Deaths per capita",
           backgroundColor: [
-            'rgba(255, 99, 132, 0.9)',
+            'rgba(255,0,27,0.8)',
         ],
         borderWidth: 1,
         data: [21334 , 42773]
@@ -295,7 +295,7 @@ $(document).ready(function () {
     ],
     datasets: [
         {
-            data: [44, 56],
+            data: [1, 99],
             backgroundColor: [
                 "rgba(255,0,27,0.8)",
                 "rgba(255,255,255,0.8)",

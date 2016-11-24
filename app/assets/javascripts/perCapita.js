@@ -5,6 +5,8 @@
     return  (document.cookie.replace(/(?:(?:^|.*;\s*)hasVoted\s*\=\s*([^;]*).*$)|^.*$/, "$1") === "true");
   };
 
+  var myChart;
+
 
 $(document).ready(function () {
 
@@ -54,7 +56,7 @@ $(document).ready(function () {
   $('#top-quote').css('background-position-y', scroll / 3);
 
 
-  if ($(this).scrollTop() < 980) {
+  if ($(this).scrollTop() < 840) {
     $('#columbine').addClass('scroll-it');
   };
 
@@ -106,7 +108,7 @@ $(document).ready(function () {
     })
     .done(function(response) {
       // set cookie to prevent repeat voting
-      document.cookie = "hasVoted=true; expires=Fri, 24 Nov 2016 08:59:59 GMT";
+      document.cookie = "hasVoted=true; expires=Fri, 26 Nov 2016 08:59:59 GMT";
 
       // console.log(response);
       $("#yesVotes").text(response.true);
@@ -222,14 +224,26 @@ $(document).ready(function () {
 
   ctxBar = $('#ctxBar-Aus');
 
+  var waypointDon = new Waypoint({
+  element: ctxBar,
+  handler: function() {
+
   var myDoughnutChartAus = new Chart(ctxBar, {
     type: 'doughnut',
     data: data,
     options: {}
-  });
+  })
+    this.destroy();
+    },
+    offset: '75%'
+    });
 
 
   ctxBar_us = $('#ctxBar-Us')
+
+  var waypointDon = new Waypoint({
+  element: ctxBar_us,
+  handler: function() {
 
   var myDoughnutChartUs = new Chart (ctxBar_us, {
 
@@ -238,9 +252,11 @@ $(document).ready(function () {
     options:
       {
       }
-
-  });
-
+    })
+      this.destroy();
+      },
+      offset: '75%'
+      });
 
 
   // TODO: move data for this into JSON file //////////////////////////////////////////////////
@@ -275,7 +291,7 @@ $(document).ready(function () {
   var waypointVote = new Waypoint({
   element: ctx,
   handler: function() {
-    var myChart = new Chart(ctx, {
+    myChart = new Chart(ctx, {
 
     type: 'pie',
     data: voteData,

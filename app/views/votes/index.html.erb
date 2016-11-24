@@ -35,7 +35,7 @@
 
     <div class="homicides" id="orlando-quote">
     <div class="answer-text-white">In 1996,</div>
-      <div class="title-text">Australia banned firearms after the Port Arthur Massacre which killed xx people.</div>
+      <div class="title-text">Australia banned firearms after the Port Arthur Massacre which killed 35 people.</div>
       <div class="title-text">Since then, Australia has had </div>
       <div class="answer-text-white">0 mass shootings</div>
       <div class="title-text">The United States has had</div>
@@ -44,7 +44,7 @@
       <div class="answer-text-white">200+ people dead</div>
 
       <div class="reference">
-        <a href="http://www.motherjones.com/politics/2012/12/mass-shootings-mother-jones-full-data">reference here</a>
+        <a href="http://www.motherjones.com/politics/2012/12/mass-shootings-mother-jones-full-data" target="_blank">reference here</a>
       </div>
     </div>
     <div id="columbine" style="height:1000px">
@@ -61,7 +61,7 @@
     <div id="knife-left">
       <div class="answer-text top"><div class="title-text">Most common weapon in homicide</div>Knife</div>
       <div class="weapon">
-        <%= image_tag "knife.png", size: "300" %>
+        <%= image_tag "knife.png", size: "300x300" %>
       </div>
     </div>
     <div id="knife-right">
@@ -108,7 +108,7 @@
       </div>
       <div class="answer-text top"><div class="title-text">Most common weapon in homicide</div>Firearm</div>
       <div class="weapon"><
-        <%= image_tag "gun.png", size: "300" %>
+        <%= image_tag "gun.png", size: "300x300" %>
 </div>
     </div>
   </section>
@@ -170,8 +170,8 @@
     <div class="answer-text-white" >Suicide by firearm comparison</div>
     <div class="title-text-white" id="switch-title">Australia per 100,000</div>
     <div class="country-btns">
-      <img src="/assets/australia.png" class="country" id="aus-btn">
-      <img src="/assets/usa.png" class="country" id="us-btn">
+      <%= image_tag "australia.png", size: "300x300", class: "country", id: "aus-btn" %>
+      <%= image_tag "usa.png", size: "300x300", class: "country", id: "us-btn" %>
     </div>
     <div class="bubble-btn">
     <canvas id="bubble" width="260" height="160" class="bubble-graph"></canvas>
@@ -191,8 +191,8 @@
     <div class="answer-text-white" >Homicide by firearm comparison</div>
     <div class="title-text-white" id="bubble-title-hom">Australia per 100,000</div>
     <div class="country-btns">
-      <img src="/assets/australia.png" class="country" id="aus-btn-hom">
-      <img src="/assets/usa.png" class="country" id="us-btn-hom">
+      <%= image_tag "australia.png", size: "300x300", class: "country", id: "aus-btn-hom" %>
+      <%= image_tag "usa.png", size: "300x300", class: "country", id: "us-btn-hom" %>
     </div>
     <div class="bubble-btn">
     <canvas id="bubble-homocide" width="260" height="160" class="bubble-graph"></canvas>

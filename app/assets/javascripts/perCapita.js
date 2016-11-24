@@ -17,6 +17,8 @@ $(document).ready(function () {
  $('.bubble').animate({transform: "scale(1)"}, 5000, 'linear');
 
    $('#us-btn').css('opacity', '0.3');
+   $('#us-btn-hom').css('opacity', '0.3');
+
 
 
   // button functionality for graphs
@@ -55,21 +57,13 @@ $(document).ready(function () {
   $('#top-quote').css('background-position-y', scroll / 3);
 
 
-  if ($(this).scrollTop() > 860) {
+  if ($(this).scrollTop() > 800) {
     $('#columbine').addClass('scroll-it');
-  }
+  };
 
   if ($(this).scrollTop() > 900) {
     $('.rectangle-box').addClass('animate');
   }
-
-   if ($(this).scrollTop() > 260) {
-     $('#data-1').fadeIn(1000);
-     $('#data-2').fadeIn(1000);
-   } else {
-     $('#data-1').fadeOut();
-     $('#data-2').fadeOut();
-   }
 
    if ($(this).scrollTop() > 860) {
      $( "#main-nav" ).slideDown(400);
@@ -267,13 +261,13 @@ $(document).ready(function () {
         {
             data: [44, 56],
             backgroundColor: [
-                "#FF6384",
-                "#36A2EB",
-            ],
-            borderColor: [
-                'rgba(255,99,132,0)',
-                'rgba(169,169,169,0.1)',
-            ],
+              'rgba(255,0,27,0.8)',
+              'rgba(169,169,169,0.2)',
+          ],
+          borderColor: [
+              'rgba(255,99,132,0)',
+              'rgba(200,200, 200,0.5)',
+          ],
             hoverBackgroundColor: [
                 "#FF6384",
                 "#36A2EB",
@@ -476,87 +470,87 @@ $(document).ready(function () {
         {
             label: 'First Dataset',
             data: [
-                {
-                // make this invisible
+              {
+              // make this invisible
+                x: 1999,
+                y: 6,
+                r: 0
+              },
+              {
                   x: 1999,
-                  y: 0,
+                  y: 6,
+                  r: 1
+              },
+              {
+                  x: 2000,
+                  y: 1.2,
+                  r: 40
+              },
+              {
+                  x: 2001,
+                  y: 1.4,
                   r: 0
-                },
-                {
-                    x: 1999,
-                    y: 1.4,
-                    r: 45
-                },
-                {
-                    x: 2000,
-                    y: 1.2,
-                    r: 40
-                },
-                {
-                    x: 2001,
-                    y: 5.4,
-                    r: 0
-                },
-                {
-                    x: 2002,
-                    y: 1.1,
-                    r: 20
-                },
-                {
-                    x: 2003,
-                    y: 1,
-                    r: 18
-                },
-                {
-                    x: 2004,
-                    y: 0.8,
-                    r: 16
-                },
-                {
-                    x: 2005,
-                    y: 0.7,
-                    r: 10
-                },
-                {
-                    x: 2006,
-                    y: 0.9,
-                    r: 10
-                },
-                {
-                    x: 2007,
-                    y: 0.8,
-                    r: 15
-                },
-                {
-                    x: 2008,
-                    y: 0.8,
-                    r: 20
-                },
-                {
-                    x: 2009,
-                    y: 0.8,
-                    r: 10
-                },
-                {
-                    x: 2010,
-                    y: 0.7,
-                    r: 10
-                },
-                {
-                    x: 2011,
-                    y: 0.6,
-                    r: 10
-                },
-                {
-                    x: 2012,
-                    y: 0.7,
-                    r: 10
-                },
-                {
-                    x: 2013,
-                    y: 0.7,
-                    r: 10
-                }
+              },
+              {
+                  x: 2002,
+                  y: 1.1,
+                  r: 20
+              },
+              {
+                  x: 2003,
+                  y: 1,
+                  r: 18
+              },
+              {
+                  x: 2004,
+                  y: 0.8,
+                  r: 16
+              },
+              {
+                  x: 2005,
+                  y: 0.7,
+                  r: 10
+              },
+              {
+                  x: 2006,
+                  y: 0.9,
+                  r: 10
+              },
+              {
+                  x: 2007,
+                  y: 0.8,
+                  r: 15
+              },
+              {
+                  x: 2008,
+                  y: 0.8,
+                  r: 20
+              },
+              {
+                  x: 2009,
+                  y: 0.8,
+                  r: 10
+              },
+              {
+                  x: 2010,
+                  y: 0.7,
+                  r: 10
+              },
+              {
+                  x: 2011,
+                  y: 0.6,
+                  r: 10
+              },
+              {
+                  x: 2012,
+                  y: 0.7,
+                  r: 10
+              },
+              {
+                  x: 2013,
+                  y: 0.7,
+                  r: 10
+              }
             ],
             backgroundColor:"rgba(255,255,255, 0.8)",
             hoverBackgroundColor: "#FF6384",
@@ -566,13 +560,13 @@ $(document).ready(function () {
       var dataHomBub = {
         datasets: [
             {
-                label: 'First Dataset',
+                label: 'Australia',
                 data: [
                     {
                     // make this invisible
                       x: 1999,
-                      y: 0,
-                      r: 0
+                      y: 6,
+                      r: 1
                     },
                     {
                         x: 1999,
@@ -751,7 +745,7 @@ $(document).ready(function () {
     this.destroy();
 
     $('#aus-btn').on('click', function() {
-      $('#aus-btn').css('opacity', '0.8');
+      $('#aus-btn').css('opacity', '1');
       $('#us-btn').css('opacity', '0.3');
       $('#aus-btn').addClass('animate-btn');
         $('#us-btn').removeClass('animate-btn');
@@ -760,13 +754,13 @@ $(document).ready(function () {
           {
           // make this invisible
             x: 1999,
-            y: 0,
+            y: 6,
             r: 0
           },
           {
               x: 1999,
-              y: 1.4,
-              r: 45
+              y: 6,
+              r: 1
           },
           {
               x: 2000,
@@ -775,7 +769,7 @@ $(document).ready(function () {
           },
           {
               x: 2001,
-              y: 5.4,
+              y: 1.4,
               r: 0
           },
           {
@@ -843,8 +837,8 @@ $(document).ready(function () {
     });
 
     $('#us-btn').on('click', function() {
-      $('#us-btn').css('opacity', '0.8');
-      $('#aus-btn').css('opacity', '0.3');
+      $('#us-btn').css('opacity', '0.3');
+      $('#aus-btn').css('opacity', '1');
       $('#us-btn').addClass('animate-btn');
       $('#aus-btn').removeClass('animate-btn');
       $('#switch-title').text('United States per 100,000');
@@ -852,7 +846,7 @@ $(document).ready(function () {
       [
           {
             x: 1999,
-            y: 0,
+            y: 6,
             r: 0
           },
           {
@@ -983,105 +977,199 @@ $(document).ready(function () {
         }
       });
 
-      $('#hom-btn').on('click', function() {
+      $('#aus-btn-hom').on('click', function() {
+        $('#aus-btn-hom').css('opacity', '1');
+        $('#us-btn-hom').css('opacity', '0.3');
+        $('#aus-btn-hom').addClass('animate-btn');
+          $('#us-btn-hom').removeClass('animate-btn');
         homocideBubble.data.datasets[0].data = [
-            {
-            // make this invisible
+          {
+          // make this invisible
+            x: 1999,
+            y: 6,
+            r: 0
+          },
+          {
               x: 1999,
-              y: 0,
+              y: 0.3,
+              r: 25
+          },
+          {
+              x: 2000,
+              y: 0.3,
+              r: 30
+          },
+          {
+              x: 2001,
+              y: 0.3,
+              r: 25
+          },
+          {
+              x: 2002,
+              y: 0.2,
+              r: 10
+          },
+          {
+              x: 2003,
+              y: 0.2,
+              r: 10
+          },
+          {
+              x: 2004,
+              y: 0.3,
+              r: 30
+          },
+          {
+              x: 2005,
+              y: 0.1,
+              r: 10
+          },
+          {
+              x: 2006,
+              y: 0.1,
+              r: 10
+          },
+          {
+              x: 2007,
+              y: 0.2,
+              r: 15
+          },
+          {
+              x: 2008,
+              y: 0.1,
+              r: 20
+          },
+          {
+              x: 2009,
+              y: 0.1,
+              r: 10
+          },
+          {
+              x: 2010,
+              y: 0.2,
+              r: 14
+          },
+          {
+              x: 2011,
+              y: 0.2,
+              r: 15
+          },
+          {
+              x: 2012,
+              y: 0.1,
+              r: 10
+          },
+          {
+              x: 2013,
+              y: 0.1,
+              r: 10
+          },
+          {
+              x: 2014,
+              y: 0.1,
+              r: 10
+          },
+          {
+              x: 2014,
+              y: 3.7,
               r: 0
-            },
-            {
-                x: 2011,
-                y: 3.59,
-                r: 35
-            },
-            {
-                x: 1999,
-                y: 3.37,
-                r: 40
-            },
-            {
-                x: 2010,
-                y: 3.75,
-                r: 50
-            },
-            {
-                x: 2001,
-                y: 3.84,
-                r: 45
-            },
-            {
-                x: 2003,
-                y: 4.11,
-                r: 55
-            },
-            {
-                x: 2004,
-                y: 4.11,
-                r: 50
-            },
-            {
-                x: 2005,
-                y: 3.97,
-                r: 38
-            },
-            {
-                x: 2006,
-                y: 4.18,
-                r: 41
-            },
-            {
-                x: 2007,
-                y: 4.29,
-                r: 45
-            },
-            {
-                x: 2000,
-                y: 3.88,
-                r: 39
-            },
-            {
-                x: 2008,
-                y: 4.19,
-                r: 43
-            },
-            {
-                x: 2002,
-                y: 3.98,
-                r: 38
-            },
-            {
-                x: 2009,
-                y: 4.01,
-                r: 39
-            },
-
-            {
-                x: 2012,
-                y: 3.55,
-                r: 32
-            },
-            {
-                x: 2013,
-                y: 3.7,
-                r: 34
-            },
-            {
-                x: 2014,
-                y: 3.54,
-                r: 36
-            },
-
-            {
-                x: 2015,
-                y: 3.56,
-                r: 0
-            }
+          }
         ];
         homocideBubble.update();
-        $('#bubble-title').text('United States per 100,000');
+        $('#bubble-title-hom').text('Australia per 100,000');
       });
+
+      $('#us-btn-hom').on('click', function() {
+        $('#us-btn-hom').css('opacity', '0.3');
+        $('#aus-btn-hom').css('opacity', '1');
+        $('#us-btn-hom').addClass('animate-btn');
+        $('#aus-btn-hom').removeClass('animate-btn');
+        homocideBubble.data.datasets[0].data = [
+          {
+            x: 1999,
+            y: 0,
+            r: 0
+          },
+          {
+              x: 1999,
+              y: 6,
+              r: 65
+          },
+          {
+              x: 2000,
+              y: 6,
+              r: 60
+          },
+          {
+              x: 2001,
+              y: 5.9,
+              r: 49
+          },
+          {
+              x: 2002,
+              y: 6,
+              r: 60
+          },
+          {
+              x: 2003,
+              y: 5.9,
+              r: 60
+          },
+          {
+              x: 2004,
+              y: 5.8,
+              r: 59
+          },
+          {
+              x: 2005,
+              y: 5.9,
+              r: 50
+          },
+          {
+              x: 2006,
+              y: 5.7,
+              r: 50
+          },
+          {
+              x: 2007,
+              y: 5.9,
+              r: 45
+          },
+          {
+              x: 2008,
+              y: 5.9,
+              r: 48
+          },
+          {
+              x: 2009,
+              y: 6,
+              r: 52
+          },
+          {
+              x: 2010,
+              y: 6.1,
+              r: 55
+          },
+          {
+              x: 2011,
+              y: 6.1,
+              r: 53
+          },
+          {
+              x: 2012,
+              y: 6.2,
+              r: 55
+          },
+          {
+              x: 2013,
+              y: 6.2,
+              r: 60
+          }
+        ];
+        homocideBubble.update();
+        $('#bubble-title-hom').text('United States per 100,000');
+      });
+
 
       this.destroy();
     },

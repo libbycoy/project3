@@ -19,7 +19,9 @@
   <section id="intro">
     <div class="intro-layer">
       <h2>GUN CONTROL</h2>
+      <h5>in the</h5>
       <h1 class="main-title">US <span class="main-title" id="aus">AUS</span></h1>
+      <h6>an incredibly biased but factually correct comparison</h6>
       <h4 id="scroll">Scroll to view</h4>
     </div>
         <div class="fullscreen-bg">
@@ -32,17 +34,17 @@
   <section id="columbine-sec">
 
     <div class="homicides" id="orlando-quote">
-    <div class="answer-text">In 1996,</div>
+    <div class="answer-text-white">In 1996,</div>
       <div class="title-text">Australia banned firearms after the Port Arthur Massacre which killed xx people.</div>
       <div class="title-text">Since then, Australia has had </div>
-      <div class="answer-text">0 mass shootings</div>
+      <div class="answer-text-white">0 mass shootings</div>
       <div class="title-text">The United States has had</div>
-      <div class="answer-text">64 mass shootings</div>
+      <div class="answer-text-white">64 mass shootings</div>
       <div class="title-text">leaving over </div>
-      <div class="answer-text">200+ people dead</div>
+      <div class="answer-text-white">200+ people dead</div>
 
-      <div class="reference">reference:
-        <a href="http://www.motherjones.com/politics/2012/12/mass-shootings-mother-jones-full-data">here</a>
+      <div class="reference">
+        <a href="http://www.motherjones.com/politics/2012/12/mass-shootings-mother-jones-full-data">reference here</a>
       </div>
     </div>
     <div id="columbine" style="height:1000px">
@@ -126,7 +128,9 @@
   <div class="middle-sec" id="suicide-sec">
 
   <div id="knife-other">
-
+    <div class="overlay-white">
+      Australia
+    </div>
     <div>
       <div class="answer-text-white"><span style="color:red">178</span>/2160</div>
       <div class="title-text">of all suicide deaths 2014</div>
@@ -141,6 +145,9 @@
     </div>
 
     <div id="knife-second">
+      <div class="overlay-white">
+        USA
+      </div>
       <div>
         <div class="answer-text-white"><span style="color:red">21,334</span>/42,773</div>
         <div class="title-text">of all suicide deaths 2014</div>
@@ -178,7 +185,7 @@
   <section class="main-sec" id="homocide-comparison">
     <br>
     <div class="answer-text-white" >Homicide by firearm comparison</div>
-    <div class="title-text-white" id="bubble-title">Australia per 100,000</div>
+    <div class="title-text-white" id="bubble-title-hom">Australia per 100,000</div>
     <div class="country-btns">
       <img src="/assets/australia.png" class="country" id="aus-btn-hom">
       <img src="/assets/usa.png" class="country" id="us-btn-hom">
@@ -188,14 +195,14 @@
   </div>
   </section>
 
-  <section class="small-sec">
+  <!-- <section class="small-sec">
     <div class="likelihoodTitle" id="switch-title">The likelihood is the same as ...</div>
       <br>
       <div id="data-3"></div>
       <div id="data-4">in the United States</div>
       <div id="data-5"></div>
       <div id="data-6">in Australia</div>
-  </section>
+  </section> -->
 
   <section class="main-sec" id="suicide-graph">
     <div>
@@ -222,37 +229,35 @@
     </div>
   </section>
 
-
-
   <section class="middle-sec" id="vote-sec">
-    <div id="knife-left">
+    <div id="knife-other top">
 
     <div class="vote">
-      <h2>Do you think the United States should tighten gun control laws?</h2>
+      <h2 class="left">Do you think the United States should tighten gun control laws?</h2>
       <%= form_for @vote do |f| %>
-        <div>
+        <div class="white">
           <%= f.label 'answer', 'Yes' %>
           <%= f.radio_button :answer, true, class: 'vote_select', :disabled => false %>
         </div>
 
-        <div>
+        <div class="white">
           <%= f.label 'answer', 'No' %>
           <%= f.radio_button :answer, false, class: 'vote_select', :disabled => false %>
         </div>
             <%= f.submit 'Submit', :class => 'btn', :disabled => true, id:'vote_submit' %>
           <% end %>
     </div>
-  </div>
+    </div>
 <!--
 
 <-->
-  <div id="knife-right">
-    <p>
-      Total yes: <p id="yesVotes"><%= @votes.where(:answer => true).count %></p>
+  <div id="knife-right top">
+    <p style="color:white" id="yes-vote">
+      Yes: <%= @votes.where(:answer => true).count %>
     </p>
 
-    <p>
-      Total no: <p id="noVotes"><%= @votes.where(:answer => false).count %></p>
+    <p style="color:white">
+      No: <%= @votes.where(:answer => false).count %>
     </p>
 
     <div style="width: 50%"></div>

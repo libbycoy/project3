@@ -12,6 +12,9 @@ $(document).ready(function () {
     $('#vote_submit').prop('disabled', true);
   }
 
+ //  animate the square
+
+ $('.bubble').animate({transform: "scale(1)"}, 5000, 'linear');
 
 
   // button functionality for graphs
@@ -41,203 +44,22 @@ $(document).ready(function () {
   });
 
 
-
-
-$('#data-btn').on('click', function() {
-  myBubbleChart.data.datasets[0].data = [
-      {
-      // make this invisible
-        x: 1999,
-        y: 0,
-        r: 0
-      },
-      {
-          x: 1999,
-          y: 6,
-          r: 15
-      },
-      {
-          x: 2000,
-          y: 6,
-          r: 30
-      },
-      {
-          x: 2001,
-          y: 5.9,
-          r: 10
-      },
-      {
-          x: 2002,
-          y: 6,
-          r: 10
-      },
-      {
-          x: 2003,
-          y: 5.9,
-          r: 15
-      },
-      {
-          x: 2004,
-          y: 5.8,
-          r: 30
-      },
-      {
-          x: 2005,
-          y: 5.9,
-          r: 10
-      },
-      {
-          x: 2006,
-          y: 5.7,
-          r: 10
-      },
-      {
-          x: 2007,
-          y: 5.9,
-          r: 15
-      },
-      {
-          x: 2008,
-          y: 5.9,
-          r: 30
-      },
-      {
-          x: 2009,
-          y: 6,
-          r: 10
-      },
-      {
-          x: 2010,
-          y: 6.1,
-          r: 10
-      },
-      {
-          x: 2011,
-          y: 6.1,
-          r: 30
-      },
-      {
-          x: 2012,
-          y: 6.2,
-          r: 10
-      },
-      {
-          x: 2013,
-          y: 6.2,
-          r: 10
-      }
-  ];
-  myBubbleChart.update();
-  $('#switch-title').text('United States per 100,000');
-  });
-
-$('#hom-btn').on('click', function() {
-  homocideBubble.data.datasets[0].data = [
-      {
-      // make this invisible
-        x: 1999,
-        y: 0,
-        r: 0
-      },
-      {
-          x: 2011,
-          y: 3.59,
-          r: 30
-      },
-      {
-          x: 1999,
-          y: 3.37,
-          r: 15
-      },
-      {
-          x: 2010,
-          y: 3.75,
-          r: 10
-      },
-      {
-          x: 2001,
-          y: 3.84,
-          r: 10
-      },
-      {
-          x: 2003,
-          y: 4.11,
-          r: 15
-      },
-      {
-          x: 2004,
-          y: 4.11,
-          r: 30
-      },
-      {
-          x: 2005,
-          y: 3.97,
-          r: 10
-      },
-      {
-          x: 2006,
-          y: 4.18,
-          r: 10
-      },
-      {
-          x: 2007,
-          y: 4.29,
-          r: 15
-      },
-      {
-          x: 2000,
-          y: 3.88,
-          r: 30
-      },
-      {
-          x: 2008,
-          y: 4.19,
-          r: 30
-      },
-      {
-          x: 2002,
-          y: 3.98,
-          r: 10
-      },
-      {
-          x: 2009,
-          y: 4.01,
-          r: 10
-      },
-
-      {
-          x: 2012,
-          y: 3.55,
-          r: 10
-      },
-      {
-          x: 2013,
-          y: 3.7,
-          r: 10
-      },
-      {
-          x: 2014,
-          y: 3.54,
-          r: 10
-      },
-
-      {
-          x: 2015,
-          y: 3.56,
-          r: 0
-      }
-  ];
-  homocideBubble.update();
-  $('#bubble-title').text('United States per 100,000');
-});
-
-
   $(window).scroll(function() {
+
 
     // scroll functions
   var scroll = $(window).scrollTop();
   $('#quote').css('background-position-y', -scroll / 3);
   $('#top-quote').css('background-position-y', scroll / 3);
+
+
+  if ($(this).scrollTop() > 880) {
+    $('#columbine').addClass('scroll-it');
+  }
+
+  if ($(this).scrollTop() > 900) {
+    $('.rectangle-box').addClass('animate');
+  }
 
    if ($(this).scrollTop() > 260) {
      $('#data-1').fadeIn(1000);
@@ -444,19 +266,25 @@ $('#hom-btn').on('click', function() {
                 "#36A2EB",
             ]
         }]
-  }
+  };
 
-  var myChart = new Chart(ctx, {
+  var waypointVote = new Waypoint({
+  element: ctx,
+  handler: function() {
+    var myChart = new Chart(ctx, {
 
-  type: 'pie',
-  data: voteData,
-  options: {
-    animation: {
-      animateScale: true
+    type: 'pie',
+    data: voteData,
+    options: {
+      animation: {
+        animateScale: true
+      }
     }
-  }
+    })
+    this.destroy();
+    },
+    offset: '75%'
   });
-
 
   var circleAus = {
     labels: [
@@ -501,44 +329,6 @@ $('#hom-btn').on('click', function() {
 
   var ctxAus = $('#aus_murder')
   var ctxUsa = $('#us_murder')
-
-  var waypoint = new Waypoint({
-  element: ctxAus,
-  handler: function() {
-    var ausChart = new Chart( ctxAus,{
-      type: 'pie',
-      data: circleAus,
-      options: {
-        animation: {
-          animateScale: true
-      }
-      }
-    })
-    this.destroy();
-  },
-  offset: '75%'
-  });
-
-
-  var waypointTwo = new Waypoint({
-  element: ctxUsa,
-  handler: function() {
-  var usaChart = new Chart( ctxUsa,{
-    type: 'pie',
-    data: circleUsa,
-    options: {
-      gridLines: {
-        display: false
-      },
-      animation: {
-        animateScale:true
-      }
-      }
-    })
-    this.destroy();
-    },
-    offset: '75%'
-  });
 
   // total death by firearm
 
@@ -595,7 +385,7 @@ $('#hom-btn').on('click', function() {
       }
     }
 
-});
+  });
 
 // total deaths
 
@@ -675,32 +465,32 @@ $('#hom-btn').on('click', function() {
                 {
                     x: 1999,
                     y: 1.4,
-                    r: 15
+                    r: 45
                 },
                 {
                     x: 2000,
                     y: 1.2,
-                    r: 30
+                    r: 40
                 },
                 {
                     x: 2001,
                     y: 5.4,
-                    r: 10
+                    r: 0
                 },
                 {
                     x: 2002,
                     y: 1.1,
-                    r: 10
+                    r: 20
                 },
                 {
                     x: 2003,
                     y: 1,
-                    r: 15
+                    r: 18
                 },
                 {
                     x: 2004,
                     y: 0.8,
-                    r: 30
+                    r: 16
                 },
                 {
                     x: 2005,
@@ -720,7 +510,7 @@ $('#hom-btn').on('click', function() {
                 {
                     x: 2008,
                     y: 0.8,
-                    r: 30
+                    r: 20
                 },
                 {
                     x: 2009,
@@ -735,7 +525,7 @@ $('#hom-btn').on('click', function() {
                 {
                     x: 2011,
                     y: 0.6,
-                    r: 30
+                    r: 10
                 },
                 {
                     x: 2012,
@@ -748,7 +538,7 @@ $('#hom-btn').on('click', function() {
                     r: 10
                 }
             ],
-            backgroundColor:"#FF6384",
+            backgroundColor:"rgba(255,255,255, 0.8)",
             hoverBackgroundColor: "#FF6384",
         }]
       };
@@ -767,7 +557,7 @@ $('#hom-btn').on('click', function() {
                     {
                         x: 1999,
                         y: 0.3,
-                        r: 15
+                        r: 25
                     },
                     {
                         x: 2000,
@@ -777,7 +567,7 @@ $('#hom-btn').on('click', function() {
                     {
                         x: 2001,
                         y: 0.3,
-                        r: 10
+                        r: 25
                     },
                     {
                         x: 2002,
@@ -787,7 +577,7 @@ $('#hom-btn').on('click', function() {
                     {
                         x: 2003,
                         y: 0.2,
-                        r: 15
+                        r: 10
                     },
                     {
                         x: 2004,
@@ -812,7 +602,7 @@ $('#hom-btn').on('click', function() {
                     {
                         x: 2008,
                         y: 0.1,
-                        r: 30
+                        r: 20
                     },
                     {
                         x: 2009,
@@ -822,12 +612,12 @@ $('#hom-btn').on('click', function() {
                     {
                         x: 2010,
                         y: 0.2,
-                        r: 10
+                        r: 14
                     },
                     {
                         x: 2011,
                         y: 0.2,
-                        r: 30
+                        r: 15
                     },
                     {
                         x: 2012,
@@ -850,11 +640,53 @@ $('#hom-btn').on('click', function() {
                         r: 0
                     },
                 ],
-                backgroundColor:"#FF6384",
+                backgroundColor: "rgba(255,255,255, 0.8)",
                 hoverBackgroundColor: "#FF6384",
             }]
           };
 
+  var waypoint = new Waypoint({
+  element: ctxAus,
+  handler: function() {
+    var ausChart = new Chart( ctxAus,{
+      type: 'pie',
+      data: circleAus,
+      options: {
+        animation: {
+          animateScale: true
+      }
+      }
+    })
+    this.destroy();
+  },
+  offset: '75%'
+  });
+
+
+  var waypointTwo = new Waypoint({
+  element: ctxUsa,
+  handler: function() {
+  var usaChart = new Chart( ctxUsa,{
+    type: 'pie',
+    data: circleUsa,
+    options: {
+      gridLines: {
+        display: false
+      },
+      animation: {
+        animateScale:true
+      }
+      }
+    })
+    this.destroy();
+    },
+    offset: '75%'
+  });
+
+
+  var waypointThree = new Waypoint({
+  element: bubbleCtx,
+  handler: function() {
 
   var myBubbleChart = new Chart(bubbleCtx,{
       type: 'bubble',
@@ -895,7 +727,103 @@ $('#hom-btn').on('click', function() {
             }
         }
       }
+    })
+    this.destroy();
+
+    $('#data-btn').on('click', function() {
+      myBubbleChart.data.datasets[0].data = [
+          {
+            x: 1999,
+            y: 0,
+            r: 0
+          },
+          {
+              x: 1999,
+              y: 6,
+              r: 65
+          },
+          {
+              x: 2000,
+              y: 6,
+              r: 60
+          },
+          {
+              x: 2001,
+              y: 5.9,
+              r: 49
+          },
+          {
+              x: 2002,
+              y: 6,
+              r: 60
+          },
+          {
+              x: 2003,
+              y: 5.9,
+              r: 60
+          },
+          {
+              x: 2004,
+              y: 5.8,
+              r: 59
+          },
+          {
+              x: 2005,
+              y: 5.9,
+              r: 50
+          },
+          {
+              x: 2006,
+              y: 5.7,
+              r: 50
+          },
+          {
+              x: 2007,
+              y: 5.9,
+              r: 45
+          },
+          {
+              x: 2008,
+              y: 5.9,
+              r: 48
+          },
+          {
+              x: 2009,
+              y: 6,
+              r: 52
+          },
+          {
+              x: 2010,
+              y: 6.1,
+              r: 55
+          },
+          {
+              x: 2011,
+              y: 6.1,
+              r: 53
+          },
+          {
+              x: 2012,
+              y: 6.2,
+              r: 55
+          },
+          {
+              x: 2013,
+              y: 6.2,
+              r: 60
+          }
+      ];
+      myBubbleChart.update();
+      $('#switch-title').text('United States per 100,000');
+      });
+
+    },
+    offset: '75%'
   });
+
+  var waypointFour = new Waypoint({
+  element: homBubCtx,
+  handler: function() {
 
   var homocideBubble = new Chart(homBubCtx,{
       type: 'bubble',
@@ -932,9 +860,114 @@ $('#hom-btn').on('click', function() {
             points: {
                 borderWidth: 1,
                 borderColor: 'rgb(0, 0, 0)'
-            }
+              }
+          }
         }
-      }
+      });
+      $('#hom-btn').on('click', function() {
+        homocideBubble.data.datasets[0].data = [
+            {
+            // make this invisible
+              x: 1999,
+              y: 0,
+              r: 0
+            },
+            {
+                x: 2011,
+                y: 3.59,
+                r: 35
+            },
+            {
+                x: 1999,
+                y: 3.37,
+                r: 40
+            },
+            {
+                x: 2010,
+                y: 3.75,
+                r: 50
+            },
+            {
+                x: 2001,
+                y: 3.84,
+                r: 45
+            },
+            {
+                x: 2003,
+                y: 4.11,
+                r: 55
+            },
+            {
+                x: 2004,
+                y: 4.11,
+                r: 50
+            },
+            {
+                x: 2005,
+                y: 3.97,
+                r: 38
+            },
+            {
+                x: 2006,
+                y: 4.18,
+                r: 41
+            },
+            {
+                x: 2007,
+                y: 4.29,
+                r: 45
+            },
+            {
+                x: 2000,
+                y: 3.88,
+                r: 39
+            },
+            {
+                x: 2008,
+                y: 4.19,
+                r: 43
+            },
+            {
+                x: 2002,
+                y: 3.98,
+                r: 38
+            },
+            {
+                x: 2009,
+                y: 4.01,
+                r: 39
+            },
+
+            {
+                x: 2012,
+                y: 3.55,
+                r: 32
+            },
+            {
+                x: 2013,
+                y: 3.7,
+                r: 34
+            },
+            {
+                x: 2014,
+                y: 3.54,
+                r: 36
+            },
+
+            {
+                x: 2015,
+                y: 3.56,
+                r: 0
+            }
+        ];
+        homocideBubble.update();
+        $('#bubble-title').text('United States per 100,000');
+      });
+
+      this.destroy();
+    },
+    offset: '75%'
   });
 
-});
+
+  });

@@ -55,7 +55,7 @@ $(document).ready(function () {
   $('#top-quote').css('background-position-y', scroll / 3);
 
 
-  if ($(this).scrollTop() > 880) {
+  if ($(this).scrollTop() > 860) {
     $('#columbine').addClass('scroll-it');
   }
 
@@ -186,9 +186,11 @@ $(document).ready(function () {
             label: "Deaths per capita",
             backgroundColor: [
                 'rgba(255,0,27,0.8)',
+                'rgba(169,169,169,0.2)',
             ],
             borderColor: [
                 'rgba(255,99,132,0)',
+                'rgba(169,169,169,0.5)',
             ],
             borderWidth: 1,
             data: [178, 2160]
@@ -210,6 +212,11 @@ $(document).ready(function () {
         label: "Deaths per capita",
           backgroundColor: [
             'rgba(255,0,27,0.8)',
+            'rgba(169,169,169,0.2)',
+        ],
+        borderColor: [
+            'rgba(255,99,132,0)',
+            'rgba(169,169,169,0.5)',
         ],
         borderWidth: 1,
         data: [21334 , 42773]
@@ -263,6 +270,10 @@ $(document).ready(function () {
                 "#FF6384",
                 "#36A2EB",
             ],
+            borderColor: [
+                'rgba(255,99,132,0)',
+                'rgba(169,169,169,0.1)',
+            ],
             hoverBackgroundColor: [
                 "#FF6384",
                 "#36A2EB",
@@ -298,11 +309,15 @@ $(document).ready(function () {
             data: [1, 99],
             backgroundColor: [
                 "rgba(255,0,27,0.8)",
-                "rgba(255,255,255,0.8)",
+                "rgba(42,42,42,0.8)",
+            ],
+            borderColor: [
+                'rgba(255,99,132,0)',
+                'rgba(169,169,169,0.1)',
             ],
             hoverBackgroundColor: [
                 "rgba(255,0,27,1)",
-                "rgba(255,255,255,0.8)",
+                "rgba(42,42,42,0.8)",
             ]
         }]
 };
@@ -317,7 +332,10 @@ $(document).ready(function () {
             data: [69, 31],
             backgroundColor: [
                 "rgba(255,0,27,0.8)",
-                "rgba(255,255,255,0.8)",
+                "rgba(42,42,42,0.8)",
+            ],borderColor: [
+                'rgba(255,99,132,0)',
+                'rgba(169,169,169,0.1)',
             ],
             hoverBackgroundColor: [
                 "rgba(255,0,27,0.8)",
@@ -737,6 +755,7 @@ $(document).ready(function () {
       $('#us-btn').css('opacity', '0.3');
       $('#aus-btn').addClass('animate-btn');
         $('#us-btn').removeClass('animate-btn');
+        $('#switch-title').text('Australia per 100,000');
       myBubbleChart.data.datasets[0].data = [
           {
           // make this invisible
@@ -828,6 +847,7 @@ $(document).ready(function () {
       $('#aus-btn').css('opacity', '0.3');
       $('#us-btn').addClass('animate-btn');
       $('#aus-btn').removeClass('animate-btn');
+      $('#switch-title').text('United States per 100,000');
       myBubbleChart.data.datasets[0].data =
       [
           {

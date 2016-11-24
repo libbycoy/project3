@@ -611,9 +611,9 @@ h2 {
 	background-size: cover;
 }
 
-#columbine-sec {
-	overflow: hidden;
-}
+// #columbine-sec {
+// 	overflow: hidden;
+// }
 
 .blue-back {
 	background-color: red;
@@ -661,7 +661,8 @@ h2 {
 }
 
 .scroll-it {
-	overflow-y:scroll; overflow-x:hidden;
+	overflow-y:scroll;
+	overflow-x:hidden;
 }
 
 .weapon {

@@ -1,4 +1,5 @@
-// cookies
+
+  // cookies
 
   var hasVoted = function() {
     return  (document.cookie.replace(/(?:(?:^|.*;\s*)hasVoted\s*\=\s*([^;]*).*$)|^.*$/, "$1") === "true");
@@ -20,16 +21,13 @@ $(document).ready(function () {
    $('#us-btn-hom').css('opacity', '0.3');
 
 
-
   // button functionality for graphs
 
   $('#per_100_suicide').hide();
   $('#total-btn').addClass('selected');
   $('#myVideo').hide();
   $('#myVideo').fadeIn(4000);
-  // $('#aus_murder').hide();
 
-  // $('#per_100_total').hide();
 
   $('#total-btn').on('click', function() {
     $('#per_100_suicide').fadeOut(1000);
@@ -47,17 +45,16 @@ $(document).ready(function () {
     suicideChart.update(1000, lazy);
   });
 
+  // scroll functions
 
   $(window).scroll(function() {
 
-
-    // scroll functions
   var scroll = $(window).scrollTop();
   $('#quote').css('background-position-y', -scroll / 3);
   $('#top-quote').css('background-position-y', scroll / 3);
 
 
-  if ($(this).scrollTop() > 800) {
+  if ($(this).scrollTop() < 980) {
     $('#columbine').addClass('scroll-it');
   };
 

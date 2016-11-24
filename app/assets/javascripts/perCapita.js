@@ -16,6 +16,8 @@ $(document).ready(function () {
 
  $('.bubble').animate({transform: "scale(1)"}, 5000, 'linear');
 
+   $('#us-btn').css('opacity', '0.3');
+
 
   // button functionality for graphs
 
@@ -295,12 +297,12 @@ $(document).ready(function () {
         {
             data: [44, 56],
             backgroundColor: [
-                "#FF6384",
-                "#36A2EB",
+                "rgba(255,0,27,0.8)",
+                "rgba(255,255,255,0.8)",
             ],
             hoverBackgroundColor: [
-                "#FF6384",
-                "#36A2EB",
+                "rgba(255,0,27,1)",
+                "rgba(255,255,255,0.8)",
             ]
         }]
 };
@@ -314,12 +316,12 @@ $(document).ready(function () {
         {
             data: [69, 31],
             backgroundColor: [
-                "#FF6384",
-                "#36A2EB",
+                "rgba(255,0,27,0.8)",
+                "rgba(255,255,255,0.8)",
             ],
             hoverBackgroundColor: [
-                "#FF6384",
-                "#36A2EB",
+                "rgba(255,0,27,0.8)",
+                "rgba(255,255,255,0.8)",
             ]
         }]
     };
@@ -730,8 +732,104 @@ $(document).ready(function () {
     })
     this.destroy();
 
-    $('#data-btn').on('click', function() {
+    $('#aus-btn').on('click', function() {
+      $('#aus-btn').css('opacity', '0.8');
+      $('#us-btn').css('opacity', '0.3');
+      $('#aus-btn').addClass('animate-btn');
+        $('#us-btn').removeClass('animate-btn');
       myBubbleChart.data.datasets[0].data = [
+          {
+          // make this invisible
+            x: 1999,
+            y: 0,
+            r: 0
+          },
+          {
+              x: 1999,
+              y: 1.4,
+              r: 45
+          },
+          {
+              x: 2000,
+              y: 1.2,
+              r: 40
+          },
+          {
+              x: 2001,
+              y: 5.4,
+              r: 0
+          },
+          {
+              x: 2002,
+              y: 1.1,
+              r: 20
+          },
+          {
+              x: 2003,
+              y: 1,
+              r: 18
+          },
+          {
+              x: 2004,
+              y: 0.8,
+              r: 16
+          },
+          {
+              x: 2005,
+              y: 0.7,
+              r: 10
+          },
+          {
+              x: 2006,
+              y: 0.9,
+              r: 10
+          },
+          {
+              x: 2007,
+              y: 0.8,
+              r: 15
+          },
+          {
+              x: 2008,
+              y: 0.8,
+              r: 20
+          },
+          {
+              x: 2009,
+              y: 0.8,
+              r: 10
+          },
+          {
+              x: 2010,
+              y: 0.7,
+              r: 10
+          },
+          {
+              x: 2011,
+              y: 0.6,
+              r: 10
+          },
+          {
+              x: 2012,
+              y: 0.7,
+              r: 10
+          },
+          {
+              x: 2013,
+              y: 0.7,
+              r: 10
+          }
+      ];
+      myBubbleChart.update();
+    });
+
+    $('#us-btn').on('click', function() {
+      $('#us-btn').css('opacity', '0.8');
+      $('#aus-btn').css('opacity', '0.3');
+      $('#us-btn').addClass('animate-btn');
+      $('#aus-btn').removeClass('animate-btn');
+      myBubbleChart.data.datasets[0].data =
+      [
           {
             x: 1999,
             y: 0,
@@ -864,6 +962,7 @@ $(document).ready(function () {
           }
         }
       });
+
       $('#hom-btn').on('click', function() {
         homocideBubble.data.datasets[0].data = [
             {

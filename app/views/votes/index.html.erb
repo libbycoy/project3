@@ -76,12 +76,12 @@
         </div>
         <div class="homicides">
           <div class="title-text">Firearm homicides</div>
-          <div class="answer-text counter">20</div>
+          <div class="answer-text counter num">20</span></div>
         </div>
       </div>
         <canvas id="aus_murder" class="circle-graph" width="50%" height="50%"></canvas>
       <div>
-        <div class="answer-text">44%</div>
+        <div class="answer-text num">44%</div>
       </div>
     </div>
   </section>
@@ -103,12 +103,12 @@
         </div>
         <div class="homicides">
           <div class="title-text">Firearm homicides</div>
-          <div class="answer-text counter">10,945</div>
+          <div class="answer-text counter num">10,945</div>
         </div>
       </div>
         <canvas id="us_murder" class="circle-graph" width="50%" height="50%"></canvas>
       <div>
-        <div class="answer-text">69%</div>
+        <div class="answer-text num">69%</div>
       </div>
     </div>
   </section>
@@ -134,7 +134,7 @@
   <div id="knife-left">
 
     <div>
-      <div class="answer-text">178/2160</div>
+      <div class="answer-text"><span style="color:red">178</span>/2160</div>
       <div class="title-text">of all suicide deaths 2014</div>
     </div>
 
@@ -150,7 +150,7 @@
 
     <div id="knife-right">
       <div>
-        <div class="answer-text">21,334/42,773</div>
+        <div class="answer-text"><span style="color:red">21,334</span>/42,773</div>
         <div class="title-text">of all suicide deaths 2014</div>
         <div style="width: 80%">
           <canvas id="ctxBar-Us" class="circle-graph"></canvas>
@@ -167,8 +167,13 @@
     <br>
     <div class="answer-text-white" >Suicide by firearm comparison</div>
     <div class="title-text" id="switch-title">Australia per 100,000</div>
-    <button class="btn-vote" id="data-btn">data switch</button>
+    <div class="country-btns">
+      <img src="/assets/australia.png" class="country" id="aus-btn">
+      <img src="/assets/usa.png" class="country" id="us-btn">
+    </div>
+    <div class="bubble-btn">
     <canvas id="bubble" width="260" height="160" class="bubble-graph"></canvas>
+    </div>
   </section>
 
   <section class="small-sec" style="background-color: red">
@@ -183,8 +188,13 @@
     <br>
     <div class="answer-text-white" >Homicide by firearm comparison</div>
     <div class="title-text" id="bubble-title">Australia per 100,000</div>
-    <button class="btn-vote" id="hom-btn">data switch</button>
+    <div class="country-btns">
+      <img src="/assets/australia.png" class="country" id="aus-btn-hom">
+      <img src="/assets/usa.png" class="country" id="us-btn-hom">
+    </div>
+    <div class="bubble-btn">
     <canvas id="bubble-homocide" width="260" height="160" class="bubble-graph"></canvas>
+  </div>
   </section>
 
   <section class="small-sec">

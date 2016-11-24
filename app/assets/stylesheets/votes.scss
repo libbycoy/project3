@@ -229,7 +229,7 @@ h2 {
 	height: 1000px;
 	display: flex;
 	width: 100%;
-	background-color: #AD272C;
+	background-color: rgb(255,0,27);
 }
 
 .main-sec {
@@ -613,4 +613,35 @@ h2 {
 
 .weapon {
 	margin-top: -500px;
+}
+
+.country {
+	width: 80%;
+	height: 80%;
+	flex-direction: column;
+}
+
+.transparent {
+	opacity: 0.2;
+}
+
+.animate-btn {
+  transform: scale(1.2);
+	transition: transform 1s ease-out;
+}
+
+.country-btns {
+	display: flex;
+	float: right;
+	width: 20%;
+	flex-direction: column;
+}
+
+.bubble-btn {
+	display: inline-block;
+	width: 80%;
+}
+
+.num {
+	color: #FF001B;
 }

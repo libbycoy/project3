@@ -53,6 +53,8 @@ $(document).ready(function () {
 
   $(window).scroll(function() {
 
+  // parallax guns scroll ////////////////
+
   var scroll = $(window).scrollTop();
   $('#quote').css('background-position-y', -scroll / 3);
   $('#top-quote').css('background-position-y', scroll / 3);
@@ -124,12 +126,14 @@ $(document).ready(function () {
       data: {answer: answer}
     })
     .done(function(response) {
+
       // set cookie to prevent repeat voting
       document.cookie = "hasVoted=true; expires=Fri, 26 Nov 2016 08:59:59 GMT";
 
-      // console.log(response);
       $("#yesVotes").text(response.true);
       $("#noVotes").text(response.false);
+
+      // accessing data to live update ///////////
 
       voteData.datasets[0].data[0] = response.true;
       voteData.datasets[0].data[1] = response.false;
@@ -140,6 +144,14 @@ $(document).ready(function () {
 
       });
     });
+
+    var waypointTop = new Waypoint({
+    element: $('#suicide-title'),
+    handler: function() {
+
+      $('.nav-text').text('Suicide Comparison');
+      }
+      });
 
 
   // starts the counters up //////////////////////////////
@@ -156,6 +168,9 @@ $(document).ready(function () {
     }
   });
 
+
+
+  // How I did doughnut tables ////
   // data for doughnut tables ///////
 
   var data = {
@@ -198,15 +213,6 @@ $(document).ready(function () {
         }
     ]
   };
-
-  var waypointTop = new Waypoint({
-  element: $('#suicide-title'),
-  handler: function() {
-
-    $('.nav-text').text('Suicide Comparison');
-    }
-    });
-
 
   // waypoints - Doughnut charts /////////////////
 
@@ -510,6 +516,8 @@ $(document).ready(function () {
     }
   });
 
+  // How I did bubble tables ////
+
   // bubble charts data and calls //////////////
 
   bubbleCtx = $('#bubble');
@@ -581,7 +589,6 @@ $(document).ready(function () {
                   y: 0.8,
                   r: 15
               },
-
               {
                   x: 2011,
                   y: 0.6,
@@ -768,6 +775,9 @@ $(document).ready(function () {
         }
       }
     })
+
+    // bubble load only happens once //////////////
+
     this.destroy();
 
     // buttons to switch between country data //////////////
@@ -776,11 +786,12 @@ $(document).ready(function () {
       $('#aus-btn').css('opacity', '1');
       $('#us-btn').css('opacity', '0.3');
       $('#aus-btn').addClass('animate-btn');
-        $('#us-btn').removeClass('animate-btn');
-        $('#switch-title').text('Australia per 100,000');
+      $('#us-btn').removeClass('animate-btn');
+      $('#switch-title').text('Australia per 100,000');
+
+
       myBubbleChart.data.datasets[0].data = [
           {
-          // make this invisible
             x: 1999,
             y: 6,
             r: 0
@@ -800,7 +811,6 @@ $(document).ready(function () {
               y: 1.2,
               r: 40
           },
-
           {
               x: 2002,
               y: 1.1,
@@ -826,7 +836,6 @@ $(document).ready(function () {
               y: 0.7,
               r: 10
           },
-
           {
               x: 2007,
               y: 0.8,

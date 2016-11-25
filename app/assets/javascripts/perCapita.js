@@ -254,8 +254,8 @@ $(document).ready(function () {
 
   var voteData = {
     labels: [
-        "Red",
-        "Blue",
+        "Yes",
+        "No",
     ],
     datasets: [
         {

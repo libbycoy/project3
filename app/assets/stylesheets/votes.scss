@@ -602,8 +602,8 @@ h2 {
 }
 
 #suicide-graph {
-	background-color: black;
-	background-blend-mode: screen;
+	background-color: #2a2a2a;
+	background-blend-mode: overlay;
 	background-image: image-url('truecost.jpg');
 	background-size: cover;
 	display: flex;
@@ -708,6 +708,10 @@ h2 {
 
 .num {
 	color: #FF001B;
+}
+
+.big {
+	font-size: 104px !important;
 }
 
 .top {

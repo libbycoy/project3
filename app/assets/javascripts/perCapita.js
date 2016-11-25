@@ -199,6 +199,14 @@ $(document).ready(function () {
     ]
   };
 
+  var waypointTop = new Waypoint({
+  element: $('#suicide-title'),
+  handler: function() {
+
+    $('.nav-text').text('Suicide Comparison');
+    }
+    });
+
 
   // waypoints - Doughnut charts /////////////////
 
@@ -307,7 +315,7 @@ $(document).ready(function () {
             ],
             hoverBackgroundColor: [
                 "rgba(255,0,27,1)",
-                "rgba(255,255,255,0.8)",
+                "rgba(42,42,42,0.8)",
             ]
         }]
       };

@@ -1,20 +1,8 @@
 
-  <!-- <div id="get-data-box">
-    <a href="#" id="get-data">Get JSON data</a>
-  </div> -->
-  <!-- <nav> <a href="#votes"><p>Vote now</p></a></nav> -->
   <nav id="main-nav">
     <div class="nav-text">Gun Control Statistics & Poll</div>
     <a href="#vote-sec"><div class="btn-vote" id="top-vote">vote now</div></a>
   </nav>
-
-  <!-- <div id="timeline">
-    <ul>
-      <li><div class="nav-text">Homicides</div></li>
-      <li><div class="nav-text">Suicides</div></li>
-      <li></li>
-    </ul>
-  </div> -->
 
   <section id="intro">
     <div class="intro-layer">
@@ -59,7 +47,7 @@
       Australia
     </div>
     <div id="knife-left">
-      <div class="answer-text top"><div class="title-text">Most common weapon in homicide</div>Knife</div>
+      <div class="answer-text top"><div class="title-text-black">Most common weapon in homicide</div>Knife</div>
       <div class="weapon">
         <%= image_tag "knife.png", size: "300x300" %>
       </div>
@@ -68,7 +56,7 @@
       <div class="wrapped-content">
         <div class="homicides" id="homicide-left">
           <div class="title-text">All homicides</div>
-          <div class="answer-text">238</div>
+          <div class="answer-text-white">238</div>
         </div>
         <div class="homicides">
           <div class="title-text">Firearm homicides</div>
@@ -106,7 +94,7 @@
       <div class="usa-overlay">
         USA
       </div>
-      <div class="answer-text top"><div class="title-text">Most common weapon in homicide</div>Firearm</div>
+      <div class="answer-text top"><div class="title-text-black">Most common weapon in homicide</div>Firearm</div>
       <div class="weapon"><
         <%= image_tag "gun.png", size: "300x300" %>
 </div>
@@ -167,8 +155,8 @@
 
   <section id="likelihood">
     <br>
-    <div class="answer-text-white" >Suicide by firearm comparison</div>
-    <div class="title-text-white" id="switch-title">Australia per 100,000</div>
+    <div class="title-text-white">Suicide by firearm comparison</div>
+    <div class="answer-text-white" id="switch-title">Australia per 100,000</div>
     <div class="country-btns">
       <%= image_tag "australia.png", size: "300x300", class: "country", id: "aus-btn" %>
       <%= image_tag "usa.png", size: "300x300", class: "country", id: "us-btn" %>
@@ -179,17 +167,17 @@
   </section>
 
   <section class="small-sec" style="background-color: red">
-    <div class="answer-text">The US had 6x the number of suicide deaths by firearm per 100,000 people.</div>
+    <div class="answer-text-white">Compared to Australia, the United States had US had 6x the number of suicide deaths by firearm per 100,000 people.</div>
     <div class="title-text">in 2014</div>
-    <div class="reference">reference:
-      <a href="http://www.motherjones.com/politics/2012/12/mass-shootings-mother-jones-full-data">here</a>
+    <div class="reference">
+      <a href="http://www.motherjones.com/politics/2012/12/mass-shootings-mother-jones-full-data">reference here</a>
     </div>
   </section>
 
-  <section class="main-sec" id="homocide-comparison">
+  <section id="homocide-comparison">
     <br>
-    <div class="answer-text-white" >Homicide by firearm comparison</div>
-    <div class="title-text-white" id="bubble-title-hom">Australia per 100,000</div>
+    <div class="title-text-white" >Homicide by firearm comparison</div>
+    <div class="answer-text-white" id="bubble-title-hom">Australia per 100,000</div>
     <div class="country-btns">
       <%= image_tag "australia.png", size: "300x300", class: "country", id: "aus-btn-hom" %>
       <%= image_tag "usa.png", size: "300x300", class: "country", id: "us-btn-hom" %>
@@ -199,22 +187,21 @@
   </div>
   </section>
 
-  <!-- <section class="small-sec">
-    <div class="likelihoodTitle" id="switch-title">The likelihood is the same as ...</div>
-      <br>
-      <div id="data-3"></div>
-      <div id="data-4">in the United States</div>
-      <div id="data-5"></div>
-      <div id="data-6">in Australia</div>
-  </section> -->
+  <section class="small-sec" style="background-color: red">
+    <div class="answer-text-white">Compared to Australia, the United States had 6x the number of murders by firearm per 100,000 people.</div>
+    <div class="title-text">in 2014</div>
+    <div class="reference">
+      <a href="http://www.motherjones.com/politics/2012/12/mass-shootings-mother-jones-full-data">reference here</a>
+    </div>
+  </section>
 
   <section class="main-sec" id="suicide-graph">
     <div>
-      <div class="answer-text">Total homicides vs. firearm homicides</div>
+      <div class="answer-text-white">Total homicides vs. firearm homicides</div>
       <div class="title-text">in population numbers</div>
       <div class="title-text">1999-2013</div>
       <button class="btn-vote" id="total-btn">Australia</button>
-      <button class="btn-vote" id="suicide-btn">United States</button>
+      <button class="btn-vote" id="suicide-btn">USA</button>
     </div>
     <div>
 
@@ -222,14 +209,6 @@
     <canvas id="per_100_total" width="300" height="300"></canvas>
     <canvas id="per_100_suicide" width="300" height="300"></canvas>
     </div>
-    </div>
-  </section>
-
-  <section class="small-sec" style="background-color: red">
-    <div class="answer-text">The US had 6x the number of murders by firearm per 100,000 people.</div>
-    <div class="title-text">in 2014</div>
-    <div class="reference">reference:
-      <a href="http://www.motherjones.com/politics/2012/12/mass-shootings-mother-jones-full-data">here</a>
     </div>
   </section>
 
@@ -252,9 +231,7 @@
           <% end %>
     </div>
     </div>
-<!--
 
-<-->
   <div id="knife-right top">
     <p style="color:white" id="yes-vote">
       Yes: <%= @votes.where(:answer => true).count %>
@@ -267,5 +244,4 @@
     <div style="width: 50%"></div>
     <canvas id="myChart" class="circle-graph"></canvas>
     </div>
-
   </section>

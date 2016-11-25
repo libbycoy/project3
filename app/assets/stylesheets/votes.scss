@@ -256,7 +256,7 @@ h2 {
 }
 
 .small-sec {
-	height: 330px;
+	height: 230px;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -398,6 +398,11 @@ h2 {
 	color: white;
 }
 
+.title-text-black {
+	font-size: 26px;
+	color: black;
+}
+
 .title-text-white {
 	font-size: 26px;
 	color: #FFF;
@@ -503,7 +508,7 @@ h2 {
 }
 
 .selected {
-	border: 4px solid black;
+	border: 4px solid red;
 }
 
 .btn-vote:hover {
@@ -560,8 +565,8 @@ h2 {
 }
 
 #per_100_suicide {
-	width: 900px !important;
-	height: 700px !important;
+	width: 800px !important;
+	height: 630px !important;
 	margin: 0 auto;
 	padding: 10px;
 	position: absolute;
@@ -571,8 +576,8 @@ h2 {
 }
 
 #per_100_total{
-	width: 900px !important;
-	height: 700px !important;
+	width: 800px !important;
+	height: 630px !important;
 	margin: 0 auto;
 	padding: 10px;
 	position: absolute;
@@ -597,7 +602,10 @@ h2 {
 }
 
 #suicide-graph {
-	background-color: #36D4A8;
+	background-color: black;
+	background-blend-mode: screen;
+	background-image: image-url('truecost.jpg');
+	background-size: cover;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -619,7 +627,7 @@ h2 {
 	background-color: red;
 	opacity: 0.6;
 	color: white;
-	height: 1200px;
+	height: 880px;
 	width: 100%;
 	overflow: hidden;
 }
@@ -741,6 +749,7 @@ h2 {
 #top-vote {
 	margin-top: -40px;
 	height: 24px;
+	margin-right: 20px;
 }
 
 a {

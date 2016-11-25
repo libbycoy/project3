@@ -5,22 +5,21 @@
     return  (document.cookie.replace(/(?:(?:^|.*;\s*)hasVoted\s*\=\s*([^;]*).*$)|^.*$/, "$1") === "true");
   };
 
+
+  // global chart config
+  Chart.defaults.global.defaultFontColor = '#fff';
+  Chart.defaults.global.defaultFontSize = 20;
   var myChart;
 
 
 $(document).ready(function () {
 
-  if( hasVoted() ){
-    $('#vote_submit').val('Already Voted');
-    $('#vote_submit').prop('disabled', true);
-  }
+  // animate intro ////
 
- //  animate the square
+  $('#scroll').delay(1000).fadeIn(400);
 
- $('.bubble').animate({transform: "scale(1)"}, 5000, 'linear');
-
-   $('#us-btn').css('opacity', '0.3');
-   $('#us-btn-hom').css('opacity', '0.3');
+  $('#us-btn').css('opacity', '0.3');
+  $('#us-btn-hom').css('opacity', '0.3');
 
 
   // button functionality for graphs
@@ -30,6 +29,8 @@ $(document).ready(function () {
   $('#myVideo').hide();
   $('#myVideo').fadeIn(4000);
 
+
+  // button functions for graphs comparing totals
 
   $('#total-btn').on('click', function() {
     $('#per_100_suicide').fadeOut(1000);
@@ -47,7 +48,8 @@ $(document).ready(function () {
     suicideChart.update(1000, lazy);
   });
 
-  // scroll functions
+
+  // scroll functions  ////////////////////////////////////
 
   $(window).scroll(function() {
 
@@ -64,7 +66,8 @@ $(document).ready(function () {
     $('.rectangle-box').addClass('animate');
   }
 
-   if ($(this).scrollTop() > 860) {
+  if ($(this).scrollTop() > 1660) {
+    $('.nav-text').text('Most common weapons in homocide')
      $( "#main-nav" ).slideDown(400);
      $('#timeline').slideDown(400);
      $('.australia').addClass('img-scale');
@@ -88,6 +91,17 @@ $(document).ready(function () {
   });
 
 
+  // voting ajax //////////////////////////
+
+  //  disable voting
+
+  if( hasVoted() ){
+    $('#vote_submit').val('Already Voted');
+    $('#vote_submit').prop('disabled', true);
+  }
+
+  // check if there are cookies etc for voting and add value to chart ////
+
   $('#new_vote').on('submit', function(e) {
 
     e.preventDefault();
@@ -96,12 +110,15 @@ $(document).ready(function () {
       return;
     }
 
+    // disable all vote buttons ////
+
     $('.vote_select').prop('disabled', true);
     $('#vote_submit').prop('disabled', true);
 
     var answer = $('.vote_select:checked').val();
 
     // ajax handler to submit vote form
+
     $.ajax('/votes', {
       method: "POST",
       data: {answer: answer}
@@ -127,7 +144,7 @@ $(document).ready(function () {
 
   // starts the counters up //////////////////////////////
 
-  $('.counter').counterUp({
+  $('.counter').counterUp ({
     time: 300
   });
 
@@ -139,62 +156,26 @@ $(document).ready(function () {
     }
   });
 
-  // animate various intros
-
-  $('#scroll').delay(1000).fadeIn(400);
-
-  var showData = $('#show-data');
-
-    // match json data to variables
-
-    // TODO: fix this
-  $.getJSON('/assets/votes.json', function (data) {
-    // console.log(Object.keys(data['likelihood']["United States"]));
-    var items = data['perCapita'];
-    var key;
-    var likelihood = data['likelihood']["United States"];
-    var likelihoodAus = data['likelihood']["Australia"];
-
-    $('#main-nav').hide();
-    $('#timeline').hide();
-    $('#scroll').hide();
-    $('#data-1').append(['United States: '], items['United States']).hide();
-    $('#data-2').append(['Australia: '], items['Australia']).hide();
-    $('#data-3').append(likelihood[0].deaths).hide();
-    $('#data-4').prepend(likelihood[0].same).fadeIn(1000).hide();
-    $('#data-5').append(likelihoodAus[0].deaths).fadeIn(1000).hide();
-    $('#data-6').prepend(likelihoodAus[0].same).fadeIn(1000).hide();
-
-  });
-
-
-
-
-  // TODO: move this into JSON file //////////////////////////////////////////////////
+  // data for doughnut tables ///////
 
   var data = {
     labels: ["Suicides by gun", "Other"],
     datasets: [
         {
-            label: "Deaths per capita",
-            backgroundColor: [
-                'rgba(255,0,27,0.8)',
-                'rgba(169,169,169,0.2)',
-            ],
-            borderColor: [
-                'rgba(255,99,132,0)',
-                'rgba(169,169,169,0.5)',
-            ],
-            borderWidth: 1,
-            data: [178, 2160]
+          label: "Deaths per capita",
+          backgroundColor: [
+              'rgba(255,0,27,0.8)',
+              'rgba(169,169,169,0.2)',
+          ],
+          borderColor: [
+              'rgba(255,99,132,0)',
+              'rgba(169,169,169,0.5)',
+          ],
+          borderWidth: 1,
+          data: [178, 2160]
         }
     ]
   };
-
-
-  // mychart.Line(data,{scaleOverride: true, scaleStartValue: 0, scaleStepWidth: 1, scaleSteps: 30});
-  Chart.defaults.global.defaultFontColor = '#fff';
-  // Chart.defaults.global.labels.fontColor = 'red'
 
 
   var data_us = {
@@ -218,9 +199,8 @@ $(document).ready(function () {
     ]
   };
 
-  // TODO: move this into JSON file //////////////////////////////////////////////////
 
-  // deaths per Capita Chart
+  // waypoints - Doughnut charts /////////////////
 
   ctxBar = $('#ctxBar-Aus');
 
@@ -259,9 +239,8 @@ $(document).ready(function () {
       });
 
 
-  // TODO: move data for this into JSON file //////////////////////////////////////////////////
 
-  // making the votes chart
+  // vote chart data ////////////////////
 
   var ctx = $("#myChart");
 
@@ -288,6 +267,8 @@ $(document).ready(function () {
         }]
   };
 
+  // vote chart waypoint and draw ////////////////////
+
   var waypointVote = new Waypoint({
   element: ctx,
   handler: function() {
@@ -306,10 +287,12 @@ $(document).ready(function () {
     offset: '75%'
   });
 
+  // circle knife/gun data ////////////////////
+
   var circleAus = {
     labels: [
-        "Red",
-        "Blue",
+        "Firearm",
+        "Total",
     ],
     datasets: [
         {
@@ -324,15 +307,15 @@ $(document).ready(function () {
             ],
             hoverBackgroundColor: [
                 "rgba(255,0,27,1)",
-                "rgba(42,42,42,0.8)",
+                "rgba(255,255,255,0.8)",
             ]
         }]
-};
+      };
 
   var circleUsa = {
     labels: [
-        "Red",
-        "Blue",
+      "Firearm",
+      "Total",
     ],
     datasets: [
         {
@@ -352,325 +335,11 @@ $(document).ready(function () {
     };
 
 
-  // waypoint triggers
+  // circle waypoint triggers ////////////////////
+
 
   var ctxAus = $('#aus_murder')
   var ctxUsa = $('#us_murder')
-
-  // total death by firearm
-
-  var suicideCtx = $('#per_100_suicide');
-
-  var suicideChart = new Chart(suicideCtx, {
-    type: 'line',
-    data: {
-      labels: [2009, 2010, 2011, 2012, 2013],
-      datasets: [{
-        scale: 10,
-        label: 'Australia',
-        borderColor: "rgba(75,192,192,0)",
-
-        pointBorderColor: "rgba(75,192,192,0)",
-        pointBackgroundColor: "rgba(75,192,192,0)",
-        pointBorderWidth: 3,
-        pointRadius: 1,
-        pointHitRadius: 10,
-        data:[13752, 13164, 12795, 12888, 12253],
-        backgroundColor: "rgba(153,255,51,0.6)"
-      }, {
-        label: 'United States',
-        borderColor: "rgba(75,192,192,0)",
-
-        pointBorderColor: "rgba(75,192,192,0)",
-        pointBackgroundColor: "rgba(75,192,192,0)",
-        pointBorderWidth: 3,
-        pointRadius: 1,
-        pointHitRadius: 10,
-        data: [9199, 8874, 8653, 8897, 8454 ],
-        backgroundColor: "rgba(255,153,0,0.6)"
-      }]
-    },
-    options: {
-      scales: {
-        xAxes: [{
-          gridLines: {
-              display: false,
-              drawTicks: false
-          }
-      }],
-      yAxes: [{
-          gridLines: {
-              display: false
-          }
-      }]
-        },
-      elements: {
-          points: {
-              borderWidth: 1,
-              borderColor: 'rgb(0, 0, 0)'
-          }
-      }
-    }
-
-  });
-
-// total deaths
-
-  var totalCtx = $('#per_100_total');
-
-  var totalChart = new Chart(totalCtx, {
-    type: 'line',
-    data: {
-      labels: [2009, 2010, 2011, 2012, 2013],
-      datasets: [{
-        scale: 10,
-        label: 'Australia',
-        lineTension: 0.1,
-        backgroundColor: "rgba(75,192,192,0.4)",
-        borderColor: "rgba(75,192,192,0)",
-
-        pointBorderColor: "rgba(75,192,192,0)",
-        pointBackgroundColor: "rgba(75,192,192,0)",
-        pointBorderWidth: 3,
-        pointRadius: 1,
-        pointHitRadius: 10,
-        data: [263, 229, 230, 454, 430],
-        backgroundColor: "rgba(153,255,51,0.6)"
-      }, {
-        label: 'United States',
-        lineTension: 0.1,
-        backgroundColor: "rgba(75,192,192,0.4)",
-        borderColor: "rgba(75,192,192,0)",
-
-        pointBorderColor: "rgba(75,192,192,0)",
-        pointBackgroundColor: "rgba(75,192,192,0)",
-        pointBorderWidth: 3,
-        pointRadius: 1,
-        pointHitRadius: 10,
-        data: [ 30, 39, 41, 43, 47],
-        backgroundColor: "rgba(255,153,0,0.6)"
-      }]
-    },
-    options: {
-      scales: {
-        xAxes: [{
-          gridLines: {
-              borderColor: 'red',
-              display: false,
-              drawTicks: false
-          }
-        }],
-        yAxes: [{
-            gridLines: {
-                color: 'transparent'
-            }
-        }]
-      },
-      elements: {
-          points: {
-              borderWidth: 10,
-              borderColor: 'rgb(0, 0, 0)'
-          }
-      }
-    }
-  });
-
-  bubbleCtx = $('#bubble');
-  homBubCtx = $('#bubble-homocide');
-
-  var dataBub = {
-    datasets: [
-        {
-            label: 'First Dataset',
-            data: [
-              {
-              // make this invisible
-                x: 1999,
-                y: 6,
-                r: 0
-              },
-              {
-                  x: 1999,
-                  y: 6,
-                  r: 1
-              },
-              {
-                  x: 2000,
-                  y: 1.2,
-                  r: 40
-              },
-              {
-                  x: 2001,
-                  y: 1.4,
-                  r: 0
-              },
-              {
-                  x: 2002,
-                  y: 1.1,
-                  r: 20
-              },
-              {
-                  x: 2003,
-                  y: 1,
-                  r: 18
-              },
-              {
-                  x: 2004,
-                  y: 0.8,
-                  r: 16
-              },
-              {
-                  x: 2005,
-                  y: 0.7,
-                  r: 10
-              },
-              {
-                  x: 2006,
-                  y: 0.9,
-                  r: 10
-              },
-              {
-                  x: 2007,
-                  y: 0.8,
-                  r: 15
-              },
-              {
-                  x: 2008,
-                  y: 0.8,
-                  r: 20
-              },
-              {
-                  x: 2009,
-                  y: 0.8,
-                  r: 10
-              },
-              {
-                  x: 2010,
-                  y: 0.7,
-                  r: 10
-              },
-              {
-                  x: 2011,
-                  y: 0.6,
-                  r: 10
-              },
-              {
-                  x: 2012,
-                  y: 0.7,
-                  r: 10
-              },
-              {
-                  x: 2013,
-                  y: 0.7,
-                  r: 10
-              }
-            ],
-            backgroundColor:"rgba(255,255,255, 0.8)",
-            hoverBackgroundColor: "#FF6384",
-        }]
-      };
-
-      var dataHomBub = {
-        datasets: [
-            {
-                label: 'Australia',
-                data: [
-                    {
-                    // make this invisible
-                      x: 1999,
-                      y: 6,
-                      r: 1
-                    },
-                    {
-                        x: 1999,
-                        y: 0.3,
-                        r: 25
-                    },
-                    {
-                        x: 2000,
-                        y: 0.3,
-                        r: 30
-                    },
-                    {
-                        x: 2001,
-                        y: 0.3,
-                        r: 25
-                    },
-                    {
-                        x: 2002,
-                        y: 0.2,
-                        r: 10
-                    },
-                    {
-                        x: 2003,
-                        y: 0.2,
-                        r: 10
-                    },
-                    {
-                        x: 2004,
-                        y: 0.3,
-                        r: 30
-                    },
-                    {
-                        x: 2005,
-                        y: 0.1,
-                        r: 10
-                    },
-                    {
-                        x: 2006,
-                        y: 0.1,
-                        r: 10
-                    },
-                    {
-                        x: 2007,
-                        y: 0.2,
-                        r: 15
-                    },
-                    {
-                        x: 2008,
-                        y: 0.1,
-                        r: 20
-                    },
-                    {
-                        x: 2009,
-                        y: 0.1,
-                        r: 10
-                    },
-                    {
-                        x: 2010,
-                        y: 0.2,
-                        r: 14
-                    },
-                    {
-                        x: 2011,
-                        y: 0.2,
-                        r: 15
-                    },
-                    {
-                        x: 2012,
-                        y: 0.1,
-                        r: 10
-                    },
-                    {
-                        x: 2013,
-                        y: 0.1,
-                        r: 10
-                    },
-                    {
-                        x: 2014,
-                        y: 0.1,
-                        r: 10
-                    },
-                    {
-                        x: 2014,
-                        y: 3.7,
-                        r: 0
-                    },
-                ],
-                backgroundColor: "rgba(255,255,255, 0.8)",
-                hoverBackgroundColor: "#FF6384",
-            }]
-          };
 
   var waypoint = new Waypoint({
   element: ctxAus,
@@ -710,6 +379,342 @@ $(document).ready(function () {
     offset: '75%'
   });
 
+
+  // line chart ////////////
+
+  var suicideCtx = $('#per_100_suicide');
+
+  var suicideChart = new Chart(suicideCtx, {
+    type: 'line',
+    data: {
+      labels: [2009, 2010, 2011, 2012, 2013],
+      datasets: [
+        {
+          label: 'Firearms',
+          borderColor: "rgba(75,192,192,0)",
+
+          pointBorderColor: "rgba(75,192,192,0)",
+          pointBackgroundColor: "rgba(75,192,192,0)",
+          pointBorderWidth: 3,
+          pointRadius: 1,
+          pointHitRadius: 10,
+          data: [9199, 8874, 8653, 8897, 8454 ],
+          backgroundColor: "rgba(253,4,4,0.8)"
+        },
+        {
+        scale: 10,
+        label: 'Total',
+        borderColor: "rgba(75,192,192,0)",
+
+        pointBorderColor: "rgba(75,192,192,0)",
+        pointBackgroundColor: "rgba(75,192,192,0)",
+        pointBorderWidth: 3,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data:[13752, 13164, 12795, 12888, 12253],
+        backgroundColor: "rgba(255,255,255,0.6)"
+      } ]
+    },
+    options: {
+      scales: {
+        xAxes: [{
+          gridLines: {
+              display: false,
+              drawTicks: false
+          }
+      }],
+      yAxes: [{
+          gridLines: {
+              display: false
+          }
+      }]
+        },
+      elements: {
+          points: {
+              borderWidth: 1,
+              borderColor: 'rgb(0, 0, 0)'
+          }
+      }
+    }
+
+  });
+
+// total deaths
+
+  var totalCtx = $('#per_100_total');
+
+  var totalChart = new Chart(totalCtx, {
+    type: 'line',
+    data: {
+      labels: [2009, 2010, 2011, 2012, 2013],
+      datasets: [
+        {
+          label: 'Firearms',
+          lineTension: 0.1,
+          backgroundColor: "rgba(75,192,192,0.4)",
+          borderColor: "rgba(75,192,192,0)",
+
+          pointBorderColor: "rgba(75,192,192,0)",
+          pointBackgroundColor: "rgba(75,192,192,0)",
+          pointBorderWidth: 3,
+          pointRadius: 1,
+          pointHitRadius: 10,
+          data: [ 30, 39, 41, 43, 47],
+          backgroundColor: "rgba(253,4,4,0.8)"
+        },
+        {
+        scale: 10,
+        label: 'Total',
+        lineTension: 0.1,
+        backgroundColor: "rgba(75,192,192,0.4)",
+        borderColor: "rgba(75,192,192,0)",
+
+        pointBorderColor: "rgba(75,192,192,0)",
+        pointBackgroundColor: "rgba(75,192,192,0)",
+        pointBorderWidth: 3,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: [263, 229, 230, 454, 430],
+        backgroundColor: "rgba(255,255,255,0.6)"
+      }]
+    },
+    options: {
+      scales: {
+        xAxes: [{
+          gridLines: {
+              borderColor: 'red',
+              display: false,
+              drawTicks: false
+          }
+        }],
+        yAxes: [{
+            gridLines: {
+                color: 'transparent'
+            }
+        }]
+      },
+      elements: {
+          points: {
+              borderWidth: 10,
+              borderColor: 'rgb(0, 0, 0)'
+          }
+      }
+    }
+  });
+
+  // bubble charts data and calls //////////////
+
+  bubbleCtx = $('#bubble');
+  homBubCtx = $('#bubble-homocide');
+
+  var dataBub = {
+    datasets: [
+        {
+            label: 'Australia',
+            data: [
+              {
+              // make this invisible
+                x: 1999,
+                y: 6,
+                r: 0
+              },
+
+              {
+                  x: 2000,
+                  y: 1.2,
+                  r: 40
+              },
+              {
+                  x: 2001,
+                  y: 1.4,
+                  r: 0
+              },
+              {
+                  x: 1999,
+                  y: 6,
+                  r: 1
+              },
+              {
+                  x: 2004,
+                  y: 0.8,
+                  r: 16
+              },
+              {
+                  x: 2003,
+                  y: 1,
+                  r: 18
+              },
+              {
+                  x: 2002,
+                  y: 1.1,
+                  r: 20
+              },
+
+
+
+              {
+                  x: 2006,
+                  y: 0.9,
+                  r: 10
+              },
+
+              {
+                  x: 2008,
+                  y: 0.8,
+                  r: 20
+              },
+              {
+                  x: 2005,
+                  y: 0.7,
+                  r: 10
+              },
+              {
+                  x: 2007,
+                  y: 0.8,
+                  r: 15
+              },
+
+              {
+                  x: 2011,
+                  y: 0.6,
+                  r: 10
+              },
+              {
+                  x: 2010,
+                  y: 0.7,
+                  r: 10
+              },
+              {
+                  x: 2009,
+                  y: 0.8,
+                  r: 10
+              },
+              {
+                  x: 2012,
+                  y: 0.7,
+                  r: 10
+              },
+              {
+                  x: 2013,
+                  y: 0.7,
+                  r: 10
+              }
+            ],
+            backgroundColor:"rgba(255,255,255, 0.8)",
+            hoverBackgroundColor: "#FF6384",
+        }]
+      };
+
+      var dataHomBub = {
+        datasets: [
+            {
+                label: 'Australia',
+                data: [
+                    {
+                    // make this invisible
+                      x: 1999,
+                      y: 6,
+                      r: 1
+                    },
+                    {
+                        x: 2014,
+                        y: 0.1,
+                        r: 10
+                    },
+
+                    {
+                        x: 2000,
+                        y: 0.3,
+                        r: 30
+                    },
+                    {
+                        x: 2001,
+                        y: 0.3,
+                        r: 25
+                    },
+
+                    {
+                        x: 1999,
+                        y: 0.3,
+                        r: 25
+                    },
+                    {
+                        x: 2002,
+                        y: 0.2,
+                        r: 10
+                    },
+                    {
+                        x: 2003,
+                        y: 0.2,
+                        r: 10
+                    },
+
+                    {
+                        x: 2005,
+                        y: 0.1,
+                        r: 10
+                    },
+                    {
+                        x: 2006,
+                        y: 0.1,
+                        r: 10
+                    },
+                    {
+                        x: 2007,
+                        y: 0.2,
+                        r: 15
+                    },
+                    {
+                        x: 2004,
+                        y: 0.3,
+                        r: 30
+                    },
+                    {
+                        x: 2008,
+                        y: 0.1,
+                        r: 20
+                    },
+
+                    {
+                        x: 2011,
+                        y: 0.2,
+                        r: 15
+                    },
+                    {
+                        x: 2009,
+                        y: 0.1,
+                        r: 10
+                    },
+                    {
+                        x: 2012,
+                        y: 0.1,
+                        r: 10
+                    },
+                    {
+                        x: 2013,
+                        y: 0.1,
+                        r: 10
+                    },
+
+                    {
+                        x: 2010,
+                        y: 0.2,
+                        r: 14
+                    },
+
+                    {
+                        x: 2014,
+                        y: 3.7,
+                        r: 0
+                    },
+                ],
+                backgroundColor: "rgba(255,255,255, 0.8)",
+                hoverBackgroundColor: "#FF6384",
+            }]
+          };
+
+
+  // bubble waypoint triggers //////////////
 
   var waypointThree = new Waypoint({
   element: bubbleCtx,
@@ -757,6 +762,8 @@ $(document).ready(function () {
     })
     this.destroy();
 
+    // buttons to switch between country data //////////////
+
     $('#aus-btn').on('click', function() {
       $('#aus-btn').css('opacity', '1');
       $('#us-btn').css('opacity', '0.3');
@@ -776,15 +783,16 @@ $(document).ready(function () {
               r: 1
           },
           {
-              x: 2000,
-              y: 1.2,
-              r: 40
-          },
-          {
               x: 2001,
               y: 1.4,
               r: 0
           },
+          {
+              x: 2000,
+              y: 1.2,
+              r: 40
+          },
+
           {
               x: 2002,
               y: 1.1,
@@ -796,6 +804,11 @@ $(document).ready(function () {
               r: 18
           },
           {
+              x: 2006,
+              y: 0.9,
+              r: 10
+          },
+          {
               x: 2004,
               y: 0.8,
               r: 16
@@ -805,15 +818,16 @@ $(document).ready(function () {
               y: 0.7,
               r: 10
           },
-          {
-              x: 2006,
-              y: 0.9,
-              r: 10
-          },
+
           {
               x: 2007,
               y: 0.8,
               r: 15
+          },
+          {
+              x: 2009,
+              y: 0.8,
+              r: 10
           },
           {
               x: 2008,
@@ -821,8 +835,8 @@ $(document).ready(function () {
               r: 20
           },
           {
-              x: 2009,
-              y: 0.8,
+              x: 2012,
+              y: 0.7,
               r: 10
           },
           {
@@ -835,11 +849,7 @@ $(document).ready(function () {
               y: 0.6,
               r: 10
           },
-          {
-              x: 2012,
-              y: 0.7,
-              r: 10
-          },
+
           {
               x: 2013,
               y: 0.7,
@@ -859,7 +869,7 @@ $(document).ready(function () {
       [
           {
             x: 1999,
-            y: 6,
+            y: 1,
             r: 0
           },
           {
@@ -899,8 +909,8 @@ $(document).ready(function () {
           },
           {
               x: 2006,
-              y: 5.7,
-              r: 50
+              y: 5.9,
+              r: 30
           },
           {
               x: 2007,
@@ -1141,7 +1151,7 @@ $(document).ready(function () {
           {
               x: 2006,
               y: 5.7,
-              r: 50
+              r: 30
           },
           {
               x: 2007,
